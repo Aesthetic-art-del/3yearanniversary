@@ -1,0 +1,1759 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>[hidden]{display:none!important}img{max-width:100%}html{background:#0c0a0b}</style>
+<title>Sandra &amp; Sreelesh</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@500;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<style>
+:root{
+  /* Layout: one dark streaming-service world. Full-bleed hero, sticky chip nav, horizontal rows, one red accent, rose for the romantic moments. */
+  --bg:#0c0a0b; --surface:#181315; --raise:#241c1f; --line:#382c30;
+  --fg:#f6efef; --muted:#ad9ea1; --accent:#e5253a; --accent-deep:#a3121f; --rose:#ff9fb2; --gold:#f3c969;
+  --paper:#f1e7d8; --ink:#2b1d1f;
+  --font-display:'Bebas Neue','Arial Narrow',Impact,sans-serif;
+  --font-body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-hand:'Caveat','Segoe Script','Bradley Hand',cursive;
+  --gl:max(16px,env(safe-area-inset-left,0px)); --gr:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html.lock{overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 var(--font-body);overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+h1,h2,h3,h4,p,ul,ol,dl,dd{margin:0}
+ul,ol{padding:0;list-style:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:1100px;margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:6px;padding:11px 20px;font-weight:700;background:var(--fg);color:#111}
+.btn.red{background:var(--accent);color:#fff}
+.btn.ghost{background:rgba(255,255,255,.16);color:var(--fg)}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.btn svg{flex:none}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+/* overlays */
+.overlay{position:fixed;inset:0;z-index:200;background:#000;display:grid;place-items:center;overflow:auto;
+  padding:env(safe-area-inset-top,0px) max(16px,env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(16px,env(safe-area-inset-left,0px))}
+.intro-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;opacity:0;pointer-events:none}
+.intro-video.on{opacity:1}
+.intro-start{background:none;border:0;display:grid;gap:8px;text-align:center;padding:32px}
+.intro-start span{font:400 34px/1 var(--font-display);letter-spacing:.2em;color:var(--fg);animation:pulse 1.8s ease-in-out infinite}
+.intro-start small{color:var(--muted)}
+@keyframes pulse{50%{opacity:.35}}
+.intro-title{position:relative;text-align:center;display:grid;gap:14px;justify-items:center;width:100%}
+.intro-title h1{font:400 clamp(52px,16vw,128px)/.95 var(--font-display);color:var(--accent);display:grid;gap:2px;padding-left:.2em;animation:tighten 3.1s ease-out forwards}
+.intro-title .amp{color:var(--rose);font-size:.55em}
+.intro-title p{color:var(--muted);letter-spacing:.3em;text-transform:uppercase;font-size:12px;animation:fadein 3s ease-out forwards}
+.streak{position:absolute;left:0;right:0;top:50%;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);transform:scaleX(0);animation:streak 2.4s ease-out forwards}
+@keyframes tighten{from{letter-spacing:.2em;opacity:0;filter:blur(8px)}35%{opacity:1;filter:blur(0)}to{letter-spacing:.03em;opacity:1}}
+@keyframes streak{40%{transform:scaleX(1);opacity:1}to{transform:scaleX(1);opacity:0}}
+@keyframes fadein{from{opacity:0}60%{opacity:0}to{opacity:1}}
+
+/* profiles */
+.profiles-box{text-align:center;display:grid;gap:28px;justify-items:center}
+.profiles-box h2{font:400 clamp(34px,9vw,56px)/1 var(--font-display);letter-spacing:.04em}
+.profiles{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
+.prof{background:none;border:0;display:grid;gap:10px;justify-items:center;width:104px;color:var(--muted)}
+.prof .av{width:104px;height:104px;border-radius:8px;position:relative;overflow:hidden;border:3px solid transparent;transition:border-color .15s,transform .15s}
+.prof:hover .av,.prof:focus-visible .av{border-color:var(--fg);transform:scale(1.04)}
+.prof:hover,.prof:focus-visible{color:var(--fg)}
+.av svg{width:100%;height:100%;display:block}
+.av .lockv{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.55);color:var(--fg)}
+.shake{animation:shake .45s}
+@keyframes shake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+
+/* header */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:linear-gradient(var(--bg) 70%,rgba(12,10,11,0));padding-bottom:10px}
+.top-row{display:flex;align-items:center;gap:10px;padding-top:10px}
+.logo{background:none;border:0;padding:0;font:400 34px/1 var(--font-display);color:var(--accent);letter-spacing:.04em;margin-right:auto}
+.icon-btn{background:rgba(255,255,255,.08);border:0;border-radius:50%;width:38px;height:38px;display:grid;place-items:center}
+.me-btn{border:0;padding:0;border-radius:6px;width:38px;height:38px;overflow:hidden}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:transparent;border-radius:999px;padding:5px 14px;font-size:13px;color:var(--fg)}
+.chip:hover{background:var(--raise)}
+
+/* hero */
+.hero{position:relative;display:flex;align-items:flex-end;min-height:470px;margin-top:-60px;padding-top:120px;overflow:hidden}
+.hero-art{position:absolute;inset:0;background:radial-gradient(60% 45% at 72% 22%,rgba(229,37,58,.6),transparent 70%),radial-gradient(55% 50% at 18% 42%,rgba(255,159,178,.28),transparent 70%),linear-gradient(160deg,#2b1219,#0c0a0b 75%);background-size:cover;background-position:center}
+.hero-art::after{content:"S&S";position:absolute;right:-6px;top:84px;font:400 150px/1 var(--font-display);color:rgba(255,255,255,.07);letter-spacing:.02em}
+.hero.has-img .hero-art::after{content:none}
+.hero.has-img{min-height:640px}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 4%,rgba(12,10,11,.35) 55%,rgba(12,10,11,.55))}
+.hero .wrap{position:relative;z-index:1;padding-bottom:26px;display:grid;gap:12px;width:100%}
+.orig{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.orig b{font:400 26px/1 var(--font-display);color:var(--accent);letter-spacing:.04em}
+.hero h1{font:400 clamp(52px,14vw,92px)/.92 var(--font-display);letter-spacing:.02em;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:13px;color:var(--muted)}
+.meta .match{color:#58d68d;font-weight:700}
+.meta .rate{border:1px solid var(--muted);padding:0 6px;border-radius:3px;font-size:12px}
+.hero p.syn{max-width:520px;color:#e4d8d9}
+.hero .acts{display:flex;gap:10px;flex-wrap:wrap}
+
+/* sections */
+section{scroll-margin-top:104px}
+.sec{padding-block:26px}
+.sec h2{font:400 28px/1.05 var(--font-display);letter-spacing:.04em;margin-bottom:12px;text-wrap:balance}
+.sec .sub{color:var(--muted);margin:-6px 0 14px}
+.row{display:flex;gap:10px;overflow-x:auto;padding:2px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));margin-left:calc(-1*var(--gl));margin-right:calc(-1*var(--gr));scroll-snap-type:x proximity;scrollbar-width:thin}
+.row>*{scroll-snap-align:start}
+
+/* finale card */
+.fin-card{display:grid;gap:12px;padding:20px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(135deg,#2a1218,var(--surface) 70%)}
+.fin-card h2{margin:0}
+.fin-prog{height:6px;background:var(--raise);border-radius:3px;overflow:hidden}
+.fin-prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .4s}
+.fin-card.ready{border-color:var(--accent);animation:glow 2s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 0 4px rgba(229,37,58,.25)}}
+
+/* posters */
+.wide{flex:0 0 auto;width:214px;background:none;border:0;padding:0;text-align:left;display:grid;gap:6px}
+.wide-art{display:block;aspect-ratio:16/9;border-radius:6px;background-size:cover;background-position:center;position:relative}
+.wide-art::after{content:"S&S";position:absolute;inset:0;display:grid;place-items:center;font:400 40px/1 var(--font-display);color:rgba(255,255,255,.18)}
+.wide-art.hasimg::after{content:none}
+.wide-l{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.wide-t{font-weight:700;line-height:1.25}
+.wide-d{font-size:12px;line-height:1.4;color:var(--muted)}
+.prog{display:block;height:3px;background:var(--raise);border-radius:2px}
+.prog i{display:block;height:100%;background:var(--accent);border-radius:2px}
+.t10{flex:0 0 auto;display:flex;align-items:flex-end}
+.t10 .num{font:400 128px/.78 var(--font-display);color:var(--bg);-webkit-text-stroke:3px #7a6469;margin-right:-14px;position:relative;z-index:1}
+.poster{width:112px;aspect-ratio:2/3;border-radius:6px;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:8px;position:relative;overflow:hidden}
+.poster b{font:400 19px/1.05 var(--font-display);letter-spacing:.04em;text-transform:uppercase;position:relative;text-wrap:balance}
+.poster::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),transparent 60%)}
+.fight{flex:0 0 auto;width:210px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:14px;display:grid;gap:8px;align-content:start}
+.fight .tag{color:var(--accent);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.fight h4{font:400 24px/1.05 var(--font-display);letter-spacing:.03em}
+.fight p{color:var(--muted);font-size:13px}
+.review{flex:0 0 auto;width:250px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:14px;display:grid;gap:8px;align-content:start}
+.stars{color:var(--gold);letter-spacing:.12em}
+.review q{quotes:none;line-height:1.4}
+.review cite{color:var(--muted);font-size:13px;font-style:normal}
+
+/* series */
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:6px;overflow-x:auto}
+.tab{background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;font-weight:700;color:var(--muted);white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent)}
+.tagline{color:var(--muted);margin:12px 0 4px;font-style:italic}
+.ep{width:100%;display:grid;grid-template-columns:130px minmax(0,1fr);gap:14px;align-items:center;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:14px 0}
+.ep:hover{background:rgba(255,255,255,.03)}
+.thumb{display:block;aspect-ratio:16/9;border-radius:5px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.thumb .pl{position:absolute;inset:0;display:grid;place-items:center;color:#fff;background:rgba(0,0,0,.25)}
+.thumb .pl svg{filter:drop-shadow(0 1px 4px rgba(0,0,0,.6))}
+.ep-body{display:grid;gap:3px;min-width:0}
+.ep-top{display:flex;justify-content:space-between;gap:10px}
+.ep-top b{font-size:15px}
+.ep-top em{color:var(--muted);font-style:normal;font-size:13px;white-space:nowrap}
+.ep-d{color:var(--muted);font-size:13px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.seenmark{color:#58d68d;font-size:12px;font-weight:700}
+
+/* counter */
+.counter{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.u{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 4px;text-align:center}
+.u b{display:block;font:400 34px/1 var(--font-display);font-variant-numeric:tabular-nums;color:var(--rose)}
+.u span{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.days{margin-top:12px;color:var(--muted)}
+.days b{color:var(--fg);font-variant-numeric:tabular-nums}
+
+/* games */
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px}
+.panel{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:18px;display:grid;gap:12px;align-content:start;min-width:0}
+.panel h3{font:400 26px/1 var(--font-display);letter-spacing:.04em}
+.mgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.mcard{position:relative;aspect-ratio:3/4;perspective:600px;background:none;border:0;padding:0}
+.mface{position:absolute;inset:0;display:grid;place-items:center;border-radius:8px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .45s;overflow:hidden;text-align:center;padding:4px}
+.mback{background:linear-gradient(150deg,#3a1b24,#1c1215);border:1px solid var(--line);font:400 22px/1 var(--font-display);color:var(--accent);letter-spacing:.05em}
+.mfront{transform:rotateY(180deg);background:var(--g);background-size:cover;background-position:center}
+.mfront i{position:absolute;inset:0;background-size:cover;background-position:center}
+.mfront b{position:relative;font:400 15px/1.05 var(--font-display);letter-spacing:.05em;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.mcard.on .mback{transform:rotateY(180deg)}
+.mcard.on .mfront{transform:rotateY(0)}
+.mcard.done .mfront{outline:2px solid var(--gold);outline-offset:-2px}
+.stat{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+.q-opts{display:grid;gap:8px}
+.q-opt{text-align:left;border:1px solid var(--line);background:var(--raise);border-radius:8px;padding:11px 14px}
+.q-opt:hover:not(:disabled){border-color:var(--rose)}
+.q-opt.picked{border-color:var(--rose);background:#331b23}
+.q-res{color:var(--rose);font-weight:500;min-height:1.5em}
+.q-big{font:400 64px/1 var(--font-display);color:var(--rose)}
+
+/* scratch */
+.scratch{position:relative;border-radius:10px;overflow:hidden;min-height:150px;background:var(--raise)}
+.scratch .reveal{position:absolute;inset:0;display:grid;place-content:center;gap:4px;text-align:center;padding:14px;background:radial-gradient(80% 90% at 50% 20%,#4a1f2a,#1d1216)}
+.scratch .reveal h4{font:400 28px/1 var(--font-display);letter-spacing:.04em;color:var(--gold)}
+.scratch .reveal p{color:var(--fg);font-size:13px}
+.scratch canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;transition:opacity .6s}
+.coupons{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
+
+/* letter */
+.paper{background:var(--paper);color:var(--ink);border-radius:6px;padding:26px 22px;display:grid;gap:14px;max-width:640px;box-shadow:0 14px 40px rgba(0,0,0,.45);transform:rotate(-.6deg)}
+.paper .lt{font:500 clamp(22px,5.2vw,27px)/1.35 var(--font-hand);white-space:pre-wrap;min-height:4em}
+.paper .lt.typing::after{content:"|";animation:pulse .8s steps(1) infinite}
+.paper .hint{color:#7b6a66;font-size:12px}
+.paper audio{width:100%}
+.paper .btn{background:var(--ink);color:var(--paper);justify-self:start}
+
+footer{padding-block:40px 60px;color:var(--muted);font-size:13px;text-align:center}
+footer b{font:400 20px/1 var(--font-display);color:var(--accent);letter-spacing:.06em}
+
+/* sheet */
+.sheet{position:fixed;inset:0;z-index:120;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.74);padding-top:env(safe-area-inset-top,0px)}
+.sheet-panel{width:100%;max-width:660px;max-height:calc(100% - 12px);overflow:auto;background:var(--surface);border-radius:14px 14px 0 0;padding-bottom:env(safe-area-inset-bottom,0px);animation:rise .28s ease-out;position:relative}
+@keyframes rise{from{transform:translateY(40px);opacity:0}}
+@media (min-width:700px){.sheet{align-items:center}.sheet-panel{border-radius:14px}}
+.sheet-close{position:absolute;top:10px;right:10px;z-index:3;background:rgba(0,0,0,.6);border:0;border-radius:50%;width:36px;height:36px;font-size:20px;line-height:1;display:grid;place-items:center}
+.sheet-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000}
+.sheet-art{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 6s linear}
+.sheet-art.noimg::after{content:"S&S";position:absolute;inset:0;display:grid;place-items:center;font:400 92px/1 var(--font-display);color:rgba(255,255,255,.16)}
+.sheet-media.playing .sheet-art{transform:scale(1.14)}
+.sheet-media video{position:absolute;inset:0;width:100%;height:100%;background:#000;object-fit:contain}
+.sheet-media.tall{aspect-ratio:9/14;max-height:72vh}
+.sheet-photo{display:block;width:100%;max-height:72vh;object-fit:contain;background:#000}
+.sheet-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(24,19,21,.95),transparent 55%)}
+.sheet-cap{position:absolute;left:16px;right:16px;bottom:14px;font:400 30px/1 var(--font-display);letter-spacing:.04em}
+.big-play{position:absolute;inset:0;margin:auto;width:64px;height:64px;border-radius:50%;border:2px solid #fff;background:rgba(0,0,0,.45);color:#fff;display:grid;place-items:center}
+.sheet-media.playing .big-play{display:none}
+.skip{position:absolute;right:12px;bottom:12px;z-index:2;border:1px solid #fff;background:rgba(0,0,0,.6);color:#fff;border-radius:4px;padding:6px 12px;font-size:13px;font-weight:700}
+.ebar{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--accent)}
+.sheet-body{padding:16px;display:grid;gap:12px}
+.sheet-body h3{font:400 32px/1 var(--font-display);letter-spacing:.04em;text-wrap:balance}
+.sheet-acts{display:flex;gap:10px;flex-wrap:wrap}
+.cast{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 14px;font-size:14px}
+.cast dt{color:var(--muted)}
+.cast dd{min-width:0}
+
+/* finale */
+.fin{background:radial-gradient(70% 55% at 50% 30%,#2a1218,#000 75%)}
+.fin-stage{width:100%;max-width:520px;text-align:center;display:grid;gap:18px;justify-items:center;padding-block:24px}
+.fin-line{min-height:1.5em;color:var(--muted)}
+.fbar{width:100%;max-width:340px;height:4px;background:#2a2024;border-radius:2px;overflow:hidden}
+.fbar i{display:block;height:100%;width:0;background:var(--accent)}
+.fin-title{font:400 clamp(48px,14vw,96px)/.92 var(--font-display);letter-spacing:.03em;color:var(--fg);text-wrap:balance}
+.fin-name{font:700 clamp(44px,13vw,84px)/1 var(--font-hand);color:var(--rose)}
+.gift{width:100%;max-width:360px;min-height:190px}
+.gift .reveal h4{font-size:34px}
+.code{font:700 18px/1.3 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.08em;color:var(--fg);background:rgba(255,255,255,.08);border:1px dashed var(--gold);border-radius:6px;padding:8px 10px;overflow-wrap:anywhere;user-select:all}
+.giftvid{position:fixed;inset:0;z-index:400;background:#000;display:grid;place-items:center}
+.giftvid video{width:min(94vw,1100px);max-height:86vh;aspect-ratio:16/9;object-fit:contain;background:#000;border-radius:10px}
+.gv-turn{position:absolute;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom,0px));text-align:center;color:rgba(255,255,255,.7);font-size:12px;pointer-events:none;animation:gvfade 1s 4s forwards}
+@media (orientation:landscape){.gv-turn{display:none}}
+@keyframes gvfade{to{opacity:0}}
+.giftvid .btn{position:absolute;bottom:60px}
+.giftvid .gv-end{position:absolute;left:0;right:0;bottom:calc(40px + env(safe-area-inset-bottom,0px));display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.giftvid .gv-end .btn{position:static}
+.scratch.nkbox{max-width:400px;min-height:0}
+.scratch.nkbox .reveal{position:relative;inset:auto;display:block;padding:0;background:#17151a;text-align:center}
+.nk{padding:18px 14px 16px;display:grid;gap:14px;text-align:center}
+.nk-mark{font:italic 800 22px/1 var(--font-body);color:#ff3f8e;letter-spacing:-.02em}
+.nk-hey{font:700 17px/1.3 var(--font-body);color:var(--fg)}
+.nk-banner{position:relative;border-radius:6px;padding:34px 16px 30px;background:radial-gradient(90% 120% at 50% 40%,#d65bd0 0%,#9a3bb8 55%,#6c2a91 100%);color:#fff;display:grid;gap:2px;overflow:hidden}
+.nk-wish{font:italic 400 17px/1.2 Georgia,'Times New Roman',serif}
+.nk-big{font:700 clamp(28px,9vw,36px)/1.05 Georgia,'Times New Roman',serif;letter-spacing:-.01em}
+.nk-brand{margin-top:14px;font:italic 800 24px/1 var(--font-body);letter-spacing:-.02em}
+.nk-gem{position:absolute;width:44px;height:44px}
+.nk-gem.a{right:-6px;top:-4px}.nk-gem.b{left:-6px;bottom:-4px}
+.nk-msg{text-align:left;font-size:14px;line-height:1.55;color:var(--fg);padding:0 4px}
+.nk-msg b{font-weight:700}
+.nk-bal{font-weight:700;font-size:15px;border-top:1px dashed var(--line);padding-top:14px}
+.nk-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:10px;text-align:left}
+.nk-row small,.nk-exp small{display:block;color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.nk .code{font-size:14px;letter-spacing:.06em}
+.nk-exp{font-size:14px;text-align:left}
+.nk-redeem{font-weight:700;font-size:13px;border-top:1px dashed var(--line);padding-top:14px}
+.nk-stores{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.nk-stores span{background:#fff;color:#1b1b1f;font:700 13px/1 var(--font-body);padding:10px 12px;border-radius:4px}
+.gift-acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.credits{height:340px;overflow:hidden;width:100%;position:relative;-webkit-mask-image:linear-gradient(transparent,#000 15%,#000 85%,transparent);mask-image:linear-gradient(transparent,#000 15%,#000 85%,transparent)}
+.credits-in{display:grid;gap:22px;animation:roll 22s linear forwards;padding-top:340px}
+.credits-in p{color:var(--muted)}
+.credits-in b{display:block;font:400 28px/1.05 var(--font-display);letter-spacing:.05em;color:var(--fg)}
+@keyframes roll{to{transform:translateY(-100%)}}
+.s4{display:grid;gap:8px;text-align:left;width:100%}
+.s4 li{border:1px solid var(--line);border-radius:8px;padding:10px 14px;background:var(--surface)}
+.s4 b{color:var(--rose)}
+.renew{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;min-height:90px;align-items:center}
+#renewNo{transition:transform .25s}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:600;background:var(--fg);color:#111;border-radius:8px;padding:10px 16px;font-weight:500;max-width:min(90vw,420px);text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.5);animation:rise .25s ease-out}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:500}
+
+.fight .fthumb{display:block;aspect-ratio:16/10;border-radius:6px;background-size:cover;background-position:center top;margin:-2px 0 2px}
+.mfront{place-items:end center}
+.mfront::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),transparent 55%)}
+.mfront b{z-index:1;padding-bottom:4px}
+
+/* ===== added: recap, search, timeline dates, new sections, surprises ===== */
+.recap{background:#000}
+.recap::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(0,0,0,.6),transparent 30%,transparent 55%,rgba(0,0,0,.8))}
+.recap-stage{position:absolute;inset:0;overflow:hidden}
+.rslide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
+.rslide.on{opacity:1}
+.rbg{position:absolute;inset:-8%;background-size:cover;background-position:center;filter:blur(30px) brightness(.45)}
+.rmedia{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.rslide.on img.rmedia{animation:kb 4s ease-out forwards}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
+.recap-bar{position:absolute;z-index:4;left:0;right:0;top:env(safe-area-inset-top,0px);height:3px;background:rgba(255,255,255,.18)}
+.recap-bar i{display:block;height:100%;width:0;background:var(--accent)}
+.recap-top{position:absolute;z-index:3;left:max(16px,env(safe-area-inset-left,0px));top:calc(20px + env(safe-area-inset-top,0px));display:grid;gap:2px}
+.recap-top span{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#d8cbcd;font-weight:700}
+.recap-top b{font:400 34px/1 var(--font-display);letter-spacing:.05em}
+.recap-cap{position:absolute;z-index:3;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:calc(84px + env(safe-area-inset-bottom,0px));font:400 clamp(28px,7vw,44px)/1.02 var(--font-display);letter-spacing:.04em;text-wrap:balance;text-shadow:0 2px 14px rgba(0,0,0,.8)}
+.recap-skip{position:absolute;z-index:4;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(22px + env(safe-area-inset-bottom,0px));border:1px solid #fff;background:rgba(0,0,0,.6);color:#fff;border-radius:4px;padding:10px 20px;font-weight:700}
+.recap-skip:hover{background:rgba(255,255,255,.2)}
+
+.search{padding-top:10px}
+.search input{width:100%;background:var(--raise);border:1px solid var(--line);border-radius:8px;color:var(--fg);padding:11px 14px;font:inherit}
+.sres{display:grid;gap:4px;margin-top:8px;max-height:44vh;overflow:auto}
+.sres button{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:9px 12px;display:grid;gap:1px}
+.sres small{color:var(--muted)}
+
+.ep-date{color:var(--gold);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+
+#heroEggs{position:absolute;inset:0;z-index:3;pointer-events:none}
+.egg{position:absolute;border:0;border-radius:50%;background:transparent;padding:0;pointer-events:auto;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.egg:focus-visible{outline:2px dashed var(--rose)}
+
+.bubble{border-radius:18px 18px 18px 4px;background:var(--raise);border:1px solid var(--line);padding:14px 16px;font-size:16px;line-height:1.45;font-style:italic}
+.who-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.who-btn{border:1px solid var(--line);background:var(--raise);border-radius:8px;padding:12px;font-weight:700}
+.who-btn:hover:not(:disabled){border-color:var(--rose)}
+.who-btn.right{border-color:#58d68d;background:#173424}
+.who-btn.wrong{border-color:var(--accent);background:#3a141a}
+
+.guess-frame{position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:#000}
+.guess-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:var(--ox) var(--oy);transform:scale(4);filter:blur(9px);transition:transform 1.2s ease,filter 1.2s ease}
+.guess-frame.revealed img{transform:scale(1);filter:none}
+
+.memcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px}
+.scratch.mem{min-height:0;aspect-ratio:3/4}
+.scratch.mem .reveal{display:flex;flex-direction:column;justify-content:flex-end;gap:0;padding:0;background:#000;text-align:left}
+.mem .reveal i{position:absolute;inset:0;background-size:cover;background-position:center top}
+.mem .reveal .cap{position:relative;padding:40px 12px 12px;background:linear-gradient(to top,rgba(0,0,0,.88),transparent);width:100%}
+.mem .reveal .cap b{display:block;font:400 22px/1 var(--font-display);letter-spacing:.04em;color:var(--fg)}
+.mem .reveal .cap span{font-size:13px;color:#e4d8d9}
+
+.envs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px}
+.env{position:relative;border:1px solid var(--line);border-radius:10px;background:linear-gradient(160deg,#2a1a1e,#171113);padding:0;text-align:left;overflow:hidden;min-height:150px}
+.env:hover{border-color:var(--rose)}
+.env-flap{position:absolute;left:0;right:0;top:0;height:64px;background:linear-gradient(#3a252d,#2a1a1e);clip-path:polygon(0 0,100% 0,50% 100%)}
+.env-seal{position:absolute;left:50%;top:32px;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.5)}
+.env.opened .env-seal{background:var(--gold);color:#111}
+.env-body{display:grid;gap:4px;padding:88px 16px 16px}
+.env-body small{color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-size:11px;font-weight:700}
+.env-body b{font:400 26px/1.02 var(--font-display);letter-spacing:.04em;font-weight:400}
+.ow-media{width:100%;max-height:52vh;object-fit:contain;background:#000;border-radius:8px;display:block;margin-top:12px}
+
+.mapwrap{display:grid;grid-template-columns:minmax(0,290px) minmax(0,1fr);gap:22px;align-items:center}
+.map{width:100%;height:auto;max-height:76vh;display:block}
+.kerala{fill:var(--surface);stroke:var(--line);stroke-width:2;stroke-linejoin:round}
+.sea{font:700 11px var(--font-body);fill:var(--muted);letter-spacing:.3em;text-transform:uppercase}
+.route{fill:none;stroke:var(--rose);stroke-width:1.6;stroke-dasharray:4 5;opacity:.6}
+.pin{cursor:pointer}
+.pin .halo{fill:var(--accent);opacity:.3;transform-box:fill-box;transform-origin:center;animation:ping 2.2s ease-out infinite}
+.pin .dot{fill:var(--accent);stroke:var(--fg);stroke-width:2}
+.pin text{font:700 13px var(--font-body);fill:var(--fg);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.pin:focus-visible .dot{stroke:var(--gold);stroke-width:3}
+@keyframes ping{from{transform:scale(.6);opacity:.5}to{transform:scale(2.4);opacity:0}}
+.places{display:grid;gap:10px}
+.place{display:grid;gap:3px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:12px 14px}
+.place:hover{border-color:var(--rose)}
+.place b{font:400 24px/1 var(--font-display);letter-spacing:.04em;font-weight:400}
+.place small{color:var(--muted)}
+@media (max-width:640px){.mapwrap{grid-template-columns:minmax(0,1fr)}.map{max-width:260px;margin-inline:auto}}
+.pthumbs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.pthumb{flex:none;width:84px;aspect-ratio:1;border:2px solid transparent;border-radius:6px;background-size:cover;background-position:center;position:relative;padding:0}
+.pthumb[aria-pressed="true"]{border-color:var(--rose)}
+.pthumb .pl{position:absolute;inset:0;display:grid;place-items:center;color:#fff;background:rgba(0,0,0,.28);border-radius:4px}
+
+
+.wish{display:grid;gap:10px;justify-items:center}
+.wish-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.wchip{border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:transparent;font-size:14px}
+.wchip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.plan{display:grid;gap:10px;justify-items:center;width:100%}
+.plan-list{display:grid;gap:6px;text-align:left;width:100%;counter-reset:p}
+.plan-list li{border:1px solid var(--line);border-radius:8px;padding:10px 14px;background:var(--surface)}
+.plan-list li::before{counter-increment:p;content:"E" counter(p) "  ";color:var(--rose);font-weight:700}
+
+.pc{display:grid;gap:16px;justify-items:center;width:100%;opacity:0;transition:opacity 1.2s ease}
+.pc.on{opacity:1}
+.pc video,.pc img{width:100%;max-width:340px;max-height:52vh;object-fit:contain;border-radius:8px;background:#000}
+.pc-line{font:700 clamp(26px,7vw,38px)/1.2 var(--font-hand);color:var(--rose);min-height:2.4em}
+@media (max-width:420px){
+  .counter{gap:5px}
+  .u b{font-size:28px}
+  .u span{font-size:9px;letter-spacing:.04em}
+  .ep{grid-template-columns:112px minmax(0,1fr);gap:12px}
+  .fight{width:190px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+
+<!-- Intro -->
+<div id="intro" class="overlay">
+  <video id="introVideo" class="intro-video" src="media/netflix-intro.mp4" playsinline preload="auto"></video>
+  <button id="introStart" class="intro-start"><span>Tap to play</span><small>Turn the sound on for the full effect</small></button>
+  <div id="introTitle" class="intro-title" hidden>
+    <div class="streak"></div>
+    <h1><span>Sandra</span><span class="amp">&amp;</span><span>Sreelesh</span></h1>
+    <p>A Sreelesh Original Series</p>
+  </div>
+</div>
+
+<!-- Recap -->
+<div id="recap" class="overlay recap" hidden>
+  <div class="recap-bar"><i id="recapBar"></i></div>
+  <div class="recap-stage" id="recapStage"></div>
+  <div class="recap-top"><span>Previously on</span><b>Life of Sandra &amp; Sreelesh</b></div>
+  <p class="recap-cap" id="recapCap"></p>
+  <button class="recap-skip" id="recapSkip">Skip Recap</button>
+</div>
+
+<!-- Profiles -->
+<div id="profiles" class="overlay" hidden>
+  <div class="profiles-box">
+    <h2>Who's watching?</h2>
+    <div class="profiles">
+      <button class="prof" data-p="her"><span class="av" id="avHer"></span><span>Sandra</span></button>
+      <button class="prof" data-p="him"><span class="av" id="avHim"></span><span>Sreelesh</span></button>
+      <button class="prof" data-p="us"><span class="av" id="avUs"></span><span>Future Us</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- App -->
+<div id="app" hidden>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="top-row">
+        <button class="logo" id="logo" aria-label="S and S logo">S&amp;S</button>
+        <button class="icon-btn" id="srchBtn" aria-label="Search"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 15l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <button class="icon-btn" id="snd" aria-label="Toggle sound"></button>
+        <button class="me-btn" id="meBtn" aria-label="Switch profile"></button>
+      </div>
+      <div class="search" id="searchRow" hidden>
+        <input id="srchIn" type="search" placeholder="Search titles, places, moods..." autocomplete="off" aria-label="Search">
+        <div class="sres" id="srchRes"></div>
+      </div>
+      <nav class="chips" aria-label="Sections">
+        <button class="chip" data-go="top">Home</button>
+        <button class="chip" data-go="seriesSec">Series</button>
+        <button class="chip" data-go="top10Sec">Top 10</button>
+        <button class="chip" data-go="mapSec">Map</button>
+        <button class="chip" data-go="timeSec">Our Time</button>
+        <button class="chip" data-go="gamesSec">Games</button>
+        <button class="chip" data-go="memSec">Memories</button>
+        <button class="chip" data-go="couponSec">Coupons</button>
+        <button class="chip" data-go="openSec">Open When</button>
+        <button class="chip" data-go="letterSec">Letter</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="hero" id="hero">
+      <div class="hero-art" id="heroArt"></div>
+      <div id="heroEggs"></div>
+      <div class="wrap">
+        <div class="orig"><b>S</b> Original Series</div>
+        <h1>Life of Sandra &amp; Sreelesh</h1>
+        <div class="meta"><span class="match">98% Match</span><span>2023</span><span class="rate">U/A Unlimited Affection</span><span>3 Seasons</span><span class="rate">HD</span></div>
+        <p class="syn" id="syn"></p>
+        <div class="acts">
+          <button class="btn" id="heroPlay"></button>
+          <button class="btn ghost" id="heroInfo"></button>
+        </div>
+      </div>
+    </div>
+
+    <section class="sec" id="finSec">
+      <div class="wrap">
+        <div class="fin-card" id="finCard">
+          <span class="kicker">Season 3 · The Finale</span>
+          <h2>One last episode</h2>
+          <p id="finTxt" style="color:var(--muted)"></p>
+          <div class="fin-prog"><i id="finBar2"></i></div>
+          <div><button class="btn" id="finBtn"></button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="contSec">
+      <div class="wrap">
+        <h2>Continue Watching for Sandra</h2>
+        <div class="row" id="contRow"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="top10Sec">
+      <div class="wrap">
+        <h2>Top 10 in Our Relationship</h2>
+        <div class="row" id="t10Row"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="seriesSec">
+      <div class="wrap">
+        <h2>The Series</h2>
+        <div class="tabs" role="tablist" id="seasonTabs"></div>
+        <p class="tagline" id="tagline"></p>
+        <ul id="epList"></ul>
+      </div>
+    </section>
+
+    <section class="sec" id="galSec">
+      <div class="wrap">
+        <h2>Behind the Scenes</h2>
+        <div class="row" id="galRow"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="mapSec">
+      <div class="wrap">
+        <h2>Map of Us</h2>
+        <p class="sub">Places we have been. Tap a pin to open the photos.</p>
+        <div class="mapwrap">
+          <svg class="map" id="mapSvg" viewBox="0 0 290 475" role="img" aria-label="Map of the places we have been"></svg>
+          <div class="places" id="places"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="timeSec">
+      <div class="wrap">
+        <h2>Now Streaming: Our Time Together</h2>
+        <p class="sub">Counting since 8 November 2023. Still running.</p>
+        <div class="counter" id="counter"></div>
+        <p class="days"><b id="cDays">0</b> days and counting</p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>What Critics Are Saying</h2>
+        <div class="row" id="revRow"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="gamesSec">
+      <div class="wrap">
+        <h2>Bonus Content: Games</h2>
+        <div class="games">
+          <div class="panel">
+            <h3>Memory Match</h3>
+            <p class="sub" style="margin:0">Find every pair of moments.</p>
+            <div class="mgrid" id="matchGrid"></div>
+            <div class="stat"><span>Moves: <b id="mMoves">0</b></span><span>Pairs: <b id="mPairs">0</b>/6</span></div>
+            <p class="q-res" id="mMsg"></p>
+            <div><button class="btn ghost" id="mReset">Shuffle again</button></div>
+          </div>
+          <div class="panel" id="quizPanel">
+            <h3>Pick Your Plot Twist</h3>
+            <div id="quizBody"></div>
+          </div>
+          <div class="panel" id="guessPanel">
+            <h3>Guess The Memory</h3>
+            <p class="sub" style="margin:0">A blurry close-up. Which memory is it?</p>
+            <div id="guessBody"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="memSec">
+      <div class="wrap">
+        <h2>Scratch-Card Memories</h2>
+        <p class="sub">Scratch each card to uncover the memory underneath.</p>
+        <div class="memcards" id="memCards"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="couponSec">
+      <div class="wrap">
+        <h2>Special Offers (Scratch to Reveal)</h2>
+        <p class="sub">Valid forever. Redeemable from Sreelesh, in person.</p>
+        <div class="coupons" id="coupons"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="openSec">
+      <div class="wrap">
+        <h2>Open When...</h2>
+        <p class="sub">Sealed letters for the moments that need them. Open one only when it fits.</p>
+        <div class="envs" id="envs"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="letterSec">
+      <div class="wrap">
+        <h2>A Letter, Filmed in One Take</h2>
+        <div class="paper" id="paper">
+          <p class="lt" id="letterText" hidden></p>
+          <div id="letterAudio"></div>
+          <p class="hint" id="letterHint">Tap the letter to skip the typing.</p>
+          <button class="btn" id="openLetter">Open the letter</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <b>S&amp;S</b>
+        <p style="margin-top:8px">Directed by Sreelesh. Starring Sandra. Season 4 pending renewal.</p>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<!-- Episode / info sheet -->
+<div id="sheet" class="sheet" hidden>
+  <div class="sheet-panel" id="sheetPanel" role="dialog" aria-modal="true"></div>
+</div>
+
+<!-- Gift video (plays full screen before the card) -->
+<div id="giftVid" class="giftvid" hidden>
+  <video id="gvVideo" playsinline preload="auto"></video>
+  <p class="gv-turn">Turn your phone sideways for a bigger view</p>
+  <button class="btn" id="gvTap" hidden>Tap to play</button>
+  <div class="gv-end" id="gvEnd" hidden>
+    <button class="btn ghost" id="gvReplay">Watch again</button>
+    <button class="btn red" id="gvNext">Next</button>
+  </div>
+</div>
+
+<!-- Finale -->
+<div id="finale" class="overlay fin" hidden>
+  <div class="fin-stage" data-stage="1">
+    <p class="kicker">Season 3 · Finale</p>
+    <p class="fin-line" id="finLine"></p>
+    <div class="fbar"><i id="finBar"></i></div>
+  </div>
+  <div class="fin-stage" data-stage="2" hidden>
+    <p class="kicker">Season 3 · Finale</p>
+    <h2 class="fin-title">Happy 3rd Anniversary</h2>
+    <p class="fin-name">Sottu</p>
+    <p style="color:var(--muted)">8 November 2023 to today. 1,096 days, and I would do every one again.</p>
+    <button class="btn red" id="fin2next">Continue</button>
+  </div>
+  <div class="fin-stage" data-stage="3" hidden>
+    <p class="kicker">One more thing</p>
+    <h2 class="fin-title" style="font-size:clamp(40px,11vw,64px)">Your gift</h2>
+    <div class="scratch gift nkbox" id="giftBox">
+      <div class="reveal">
+        <div class="nk">
+          <p class="nk-mark">nykaa</p>
+          <p class="nk-hey" id="nkHey"></p>
+          <div class="nk-banner">
+            <svg class="nk-gem a" viewBox="0 0 44 44" aria-hidden="true"><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#9ea0aa"/><stop offset="1" stop-color="#e9eaf0"/></linearGradient></defs><polygon points="8,6 36,6 43,16 22,42 1,16" fill="url(#gg)"/><polyline points="1,16 43,16 M15,6 L22,42 L29,6 M15,6 L11,16 M29,6 L33,16" fill="none" stroke="#6b6d78" stroke-width="1"/></svg>
+            <svg class="nk-gem b" viewBox="0 0 44 44" aria-hidden="true"><polygon points="8,6 36,6 43,16 22,42 1,16" fill="url(#gg)"/><polyline points="1,16 43,16 M15,6 L22,42 L29,6 M15,6 L11,16 M29,6 L33,16" fill="none" stroke="#6b6d78" stroke-width="1"/></svg>
+            <span class="nk-wish">Wishing you love and joy on your</span>
+            <span class="nk-big">ANNIVERSARY</span>
+            <span class="nk-brand">nykaa</span>
+          </div>
+          <p class="nk-msg" id="nkMsg"></p>
+          <p class="nk-bal">Gift Card Balance : <span id="nkBal"></span></p>
+          <div class="nk-row">
+            <div><small>Gift Card Number</small><div class="code" id="giftCode"></div></div>
+            <div><small>Gift Card PIN</small><div class="code" id="giftPin"></div></div>
+          </div>
+          <p class="nk-exp"><small>Expires on</small><b id="nkExp"></b></p>
+          <p class="nk-redeem">Redeem online &amp; offline across all Nykaa businesses</p>
+          <div class="nk-stores"><span>Nykaa</span><span>Nykaa Fashion</span><span>Nykaa Man</span></div>
+        </div>
+      </div>
+      <canvas></canvas>
+    </div>
+    <div id="giftActs" class="gift-acts" hidden>
+      <button class="btn" id="copyCode">Copy card number</button>
+      <button class="btn" id="copyPin">Copy PIN</button>
+      <a class="btn ghost" href="https://www.nykaa.com" target="_blank" rel="noopener">Open Nykaa</a>
+    </div>
+    <p style="color:var(--muted)" id="giftHint">Use your finger to scratch the card.</p>
+    <button class="btn red" id="fin3next" hidden>Roll credits</button>
+  </div>
+  <div class="fin-stage" data-stage="4" hidden>
+    <div class="credits"><div class="credits-in" id="creditsIn"></div></div>
+    <button class="btn ghost" id="skipCredits">Skip credits</button>
+  </div>
+  <div class="fin-stage" data-stage="5" hidden>
+    <p class="kicker">Coming soon</p>
+    <h2 class="fin-title" style="font-size:clamp(44px,12vw,72px)">Season 4</h2>
+    <ul class="s4" id="s4List"></ul>
+    <div class="wish" id="wishBox">
+      <p class="kicker">Pick what you want in Season 4</p>
+      <div class="wish-chips" id="wishChips"></div>
+    </div>
+    <p id="renewQ" style="font-weight:700">Renew for Season 4?</p>
+    <div class="renew" id="renewBox">
+      <button class="btn red" id="renewYes">Yes, renew it</button>
+      <button class="btn ghost" id="renewNo">No</button>
+    </div>
+    <div class="plan" id="planBox" hidden>
+      <p class="kicker">Your Season 4 plan</p>
+      <ol class="plan-list" id="planList"></ol>
+      <button class="btn" id="copyPlan">Copy my plan for Sreelesh</button>
+    </div>
+    <button class="btn" id="backSeries" hidden>Back to the series</button>
+  </div>
+  <div class="fin-stage" data-stage="6" hidden>
+    <div class="pc" id="pc">
+      <p class="kicker">Post-credits scene</p>
+      <div id="pcMedia"></div>
+      <p class="pc-line" id="pcLine"></p>
+      <button class="btn red" id="pcNext" hidden>Continue</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden role="status"></div>
+<canvas id="confetti"></canvas>
+
+<script>
+(function(){
+'use strict';
+
+/* ================= EDIT ME =================
+   Everything personal lives in this block.
+   - img / video: paste a photo or video file URL (or data URI). Empty keeps the placeholder art.
+   - giftCode and giftPin: type the real Nykaa card number and PIN before sending.
+   - song / voiceNote: audio file URLs. Leave empty to hide those players. */
+/* PHOTOS: name -> file in the media folder. To use a different picture anywhere below,
+   change the name after "M." (for example img:M.ledge). To add a new picture, put the file
+   in the media folder and add one line here. */
+const M = {
+  whereStarted:'media/where-it-all-started.jpg',
+  childhood:'media/childhood-hug.jpg',
+  classOne:'media/classroom-heart-filter-one.jpg',
+  classTwo:'media/classroom-heart-filter-two.jpg',
+  firstDog:'media/first-date-dog-filter.jpg',
+  firstLatte:'media/first-date-latte-hearts.jpg',
+  goofy:'media/goofy-date-selfie.jpg',
+  handsLab:'media/holding-hands-communication-lab.jpg',
+  bestGarden:'media/best-date-garden-portrait.jpg',
+  bbqSkewers:'media/barbeque-nation-skewers.jpg',
+  bbqPaniPuri:'media/barbeque-nation-pani-puri.jpg',
+  bbqLook:'media/barbeque-nation-the-look.jpg',
+  bbqThali:'media/barbeque-nation-thali.jpg',
+  secondOnam:'media/second-onam-selfie.jpg',
+  thirdOnam:'media/third-onam-selfie.jpg',
+  thirdHands:'media/third-onam-holding-hands.jpg',
+  thirdSaree:'media/third-onam-orange-saree.jpg',
+  holi:'media/holi-together.jpg',
+  tees:'media/matching-black-tees.jpg',
+  outingTees:'media/outing-black-tees-selfie.jpg',
+  kozhikode:'media/kozhikode-day-out.jpg',
+  tripPair:'media/latest-trip-traditional-pair.jpg',
+  tripKayak:'media/latest-trip-kayak-lake.jpg',
+  eyesSandra:'media/eyes-sandra.jpg',
+  eyesSreelesh:'media/eyes-sreelesh.jpg'
+};
+/* VIDEOS: each has the video file, a still picture shown before playing, and portrait:true
+   if the video is tall (phone-style). Use them with video:V.name on an episode. */
+const V = {
+  firstBear:{src:'media/first-date-bear-hat.mp4',poster:'media/first-date-bear-hat-poster.jpg',portrait:true},
+  firstSurprised:{src:'media/first-date-surprised.mp4',poster:'media/first-date-surprised-poster.jpg',portrait:true},
+  firstDark:{src:'media/first-date-dark-ride.mp4',poster:'media/first-date-dark-ride-poster.jpg',portrait:true},
+  firstDogOne:{src:'media/first-date-dog-filter-one.mp4',poster:'media/first-date-dog-filter-one-poster.jpg',portrait:true},
+  firstDogTwo:{src:'media/first-date-dog-filter-two.mp4',poster:'media/first-date-dog-filter-two-poster.jpg',portrait:true},
+  goofyVibes:{src:'media/goofy-date-vibes-filter.mp4',poster:'media/goofy-date-vibes-filter-poster.jpg'},
+  goofyMask:{src:'media/goofy-date-mask-filter.mp4',poster:'media/goofy-date-mask-filter-poster.jpg'},
+  munnar:{src:'media/munnar-spontaneous-outing.mp4',poster:'media/munnar-spontaneous-outing-poster.jpg'},
+  bestBridge:{src:'media/best-date-bridge-selfie.mp4',poster:'media/best-date-bridge-selfie-poster.jpg'},
+  bestClimb:{src:'media/best-date-treetop-climb.mp4',poster:'media/best-date-treetop-climb-poster.jpg'},
+  bestRails:{src:'media/best-date-green-rails.mp4',poster:'media/best-date-green-rails-poster.jpg'},
+  bestClose:{src:'media/best-date-close-selfie.mp4',poster:'media/best-date-close-selfie-poster.jpg',portrait:true},
+  secondCloseup:{src:'media/second-onam-sunglasses-closeup.mp4',poster:'media/second-onam-sunglasses-closeup-poster.jpg'},
+  secondShades:{src:'media/second-onam-sunglasses-selfie.mp4',poster:'media/second-onam-sunglasses-selfie-poster.jpg',portrait:true},
+  thirdSnap:{src:'media/third-onam-snap-filter.mp4',poster:'media/third-onam-snap-filter-poster.jpg',portrait:true},
+  kayak:{src:'media/latest-trip-kayaking.mp4',poster:'media/latest-trip-kayaking-poster.jpg'},
+  redLights:{src:'media/random-date-red-lights.mp4',poster:'media/random-date-red-lights-poster.jpg',portrait:true},
+  alien:{src:'media/random-date-alien-filter.mp4',poster:'media/random-date-alien-filter-poster.jpg',portrait:true},
+  sillyGlasses:{src:'media/silly-filter-glasses.mp4',poster:'media/silly-filter-glasses-poster.jpg',portrait:true},
+  eyes:{src:'media/eyes-close-up.mp4',poster:'media/eyes-close-up-poster.jpg'}
+};
+/* WHERE THINGS GO: heroImg is the big picture on the home page. Each episode below has
+   img (its picture) and video (optional). Top 10, fights, memory game and gallery follow. */
+const CONFIG = {
+  her: 'Sandra', him: 'Sreelesh',
+  start: '2023-11-08T00:00:00+05:30',
+  heroImg: M.thirdOnam,
+  synopsis: 'Two people, one very long-running series. Funny, romantic and occasionally dramatic, usually over snacks. Now streaming every moment since 8 November 2023.',
+  /* GIFT CARD: type the real card number and PIN into giftCode and giftPin, nothing else needs touching. */
+  giftTo: 'Sottu', giftFrom: 'Sheekuttan',
+  giftMessage: "Halooo..this is for sottu for all the wonderful things you have done for me and for our relation..njn gift vedicha nink veetil kondovan pattilalo athonda ingane tharane..ithine kond sottunn nthelum vangan patto areela but ijj nthelum nink vendi vedichit enik pic ayakanm aaaa...AND AND HAPPY 3 YEAR ANNIVERSARY TO USSSS SOTTUSE..I LOUBB YOUU SHOO MUCHH",
+  giftBalance: 'Rs 1,000',
+  giftCode: 'X',
+  giftPin: 'X',
+  giftExpiry: '07/11/2027',
+  /* full screen video shown after the finale loading, before the card (empty string = skip) */
+  giftVideo: { src: 'media/anniversary-surprise-video.mp4', poster: 'media/anniversary-surprise-video-poster.jpg' },
+  song: '', voiceNote: '',  /* audio removed; add file paths here later if wanted */
+  seasons: [
+    { name:'The Beginning', tagline:'November 2023 to November 2024', episodes:[
+      { t:"Pilot", runtime:'6 min', date:'8 Nov 2023', d:"A day out with the gang at Lulu Mall, a few secretly held hands, and two people finding every little chance to get closer. Later, at Hi Bye, we sat, talked about absolutely everything and nothing, and took a picture. We didn't know it back then, but little did we know where this was all going.", img:M.whereStarted, video:null },
+      { t:"First Date", runtime:'4 min', date:'Nov 2023', d:"Back to where it all started. A movie, burgers, hands that never really wanted to let go, and a day neither of us wanted to end. Somewhere between all of that, we started falling for each other a little more. And honestly, I wish that day had lasted forever.", img:M.firstDog, video:V.firstBear },
+      { t:'Inside Jokes, Volume 1', runtime:'5 min', date:'Early 2024', d:'The goofy date: masks, filters and the first joke nobody else understands. Still funny.', img:M.goofy, video:V.goofyMask },
+      { t:"Hand Holding", runtime:'3 min', date:'2024', d:"Just another day at the communication lab, except it wasn't just another day for us. A few stolen moments, secretly holding hands, and that little comfort of having each other close. Nothing extraordinary happened, but somehow, it meant everything.", img:M.handsLab, video:null }
+    ]},
+    { name:'Getting Comfortable', tagline:'November 2024 to November 2025', episodes:[
+      { t:"The Great BBQ Heist", runtime:'7 min', date:'Early 2025', d:"A lunch at Barbeque Nation that started innocently enough and somehow turned into an all-you-can-eat competition (mostly on your side). We ate like there was no tomorrow, until the bill arrived and reminded us that tomorrow's expenses were in danger. Expensive? Absolutely. Worth it? Kinda. Would we do it again? Probably.", img:M.bbqPaniPuri, video:null },
+      { t:"Munnar: The Spontaneous Plan", runtime:'8 min', date:'Mid 2025', d:"A trip planned at the very last minute, a bunch of friends, and absolutely zero idea what we were getting into. From the questionable, bug-infested hotel (lovely stay, 10/10) to all the madness, it was quite an adventure. But the best part? Having you fall asleep in my arms that night. Somehow, amidst all the chaos, that was the most peaceful place in the world.", img:V.munnar.poster, video:V.munnar },
+      { t:"One of Our Best Dates", runtime:'6 min', date:'Late 2025', d:"Green rails, endless treetops, and a little adventure captured from above. Directed by yours truly, who also decided to risk his life doing the stunts.", img:M.bestGarden, video:V.bestClimb },
+      { t:"Second Onam Together", runtime:'5 min', date:'Sep 2025', d:"Second Onam together, and somehow we still haven't run out of poses. Traditional outfits, sunglasses, and two people taking way too many pictures like they're getting paid for it.", img:M.secondOnam, video:V.secondCloseup }
+    ]},
+    { name:'Still Here', tagline:'November 2025 to November 2026', episodes:[
+      { t:"Third and Best Onam Together", runtime:'6 min', date:'21 Aug 2026', d:"Third Onam together, and definitely the one that filled our camera roll the most. A hundred pictures, countless little moments, and somehow I still can't get enough of seeing you beside me. If there's one thing I'll never get tired of, it's making memories with you.", img:M.thirdOnam, video:V.thirdSnap },
+      { t:'Bloopers', runtime:'5 min', date:'2026', d:'Silly filters, bad angles and everything that was funnier because it went wrong.', img:V.sillyGlasses.poster, video:V.sillyGlasses },
+      { t:"The Great Kayaking Adventure", runtime:'8 min', date:'Nov 2026', d:"A trip planned to perfection by yours truly, followed by a kayaking session where one of us did all the actual rowing while the other occasionally introduced her paddle to the water. Safe to say, I paid for that little adventure the next morning with my arms and legs. But hey, at least we got some pretty pictures and another memory worth keeping.", img:M.tripKayak, video:V.kayak },
+      { t:'The Anniversary Special', runtime:'9 min', date:'8 Nov 2026', d:'Three years in, still holding hands and still in matching colours. This one has a surprise ending.', img:M.thirdHands, video:null }
+    ]}
+  ],
+  top10: [
+    {t:'Where It All Started',img:M.whereStarted},{t:'Little Us',img:M.childhood},{t:'Hand In Hand',img:M.thirdHands},{t:'Chundari',img:M.thirdSaree},{t:'Holi Together',img:M.holi},
+    {t:'Matching Tees Day',img:M.tees},{t:'Barbeque Nation Nights',img:M.bbqSkewers},{t:'Classroom Crush',img:M.classOne},{t:'When Our Eyes Crossed',img:M.eyesSandra},{t:'Out In Kozhikode',img:M.kozhikode}
+  ],
+  fights: [
+    {t:'Where Do We Eat', r:'Resolved in 1 hour and 1 coin toss.', img:M.bbqPaniPuri},
+    {t:'\"I\'m Fine\"', r:'Resolved in 0 minutes. It was not fine.', img:M.bbqLook},
+    {t:'The Late Reply', r:'Resolved with 1 apology and 1 snack.', img:M.eyesSreelesh},
+    {t:'Where Is The Charger', r:'Resolved in 3 minutes. It was in the bag.', img:M.outingTees}
+  ],
+  reviews: [
+    {q:'Would watch again. And again. And again.', c:'The Group Chat', s:5},
+    {q:'The chemistry is unreal and the snacks are even better.', c:'A Very Reliable Source', s:5},
+    {q:'Loses one star every time someone forgets the charger.', c:'Every Phone Battery', s:4},
+    {q:'Came for the romance, stayed for the fights that end with food.', c:'Audience Member #1', s:5}
+  ],
+  match: [
+    {k:'Day One',h:348,img:M.whereStarted},{k:'First Date',h:12,img:M.firstDog},{k:'Midnight Snacks',h:330,img:M.bbqPaniPuri},
+    {k:'Dressed Up',h:2,img:M.thirdSaree},{k:'Matching Tees',h:320,img:M.tees},{k:'Our Song',h:18,img:M.bestGarden}
+  ],
+  gallery: [
+    {t:'Our Childhood', d:'Two little kids in a field, hugging like they already knew.', img:M.childhood},
+    {t:'And Where It All Started', d:'A crowded shop, bright lights and the selfie that began the series.', img:M.whereStarted},
+    {t:'Random Classroom Pics, Take 1', d:'Uniforms, heart filters and a smile you cannot fake.', img:M.classOne},
+    {t:'Random Classroom Pics, Take 2', d:'Take 2: same hearts, same grins, a little closer.', img:M.classTwo},
+    {t:'First Date, Dog Filter', d:'The puppy ears came out and the nerves went away.', img:M.firstDog},
+    {t:'First Date, Two Lattes', d:'Two cups, two hearts in the foam. The cafe knew before we did.', img:M.firstLatte},
+    {t:'First Date, Bear Hat', d:'A bear hat, fries in the background and a smile that settled it.', img:V.firstBear.poster, video:V.firstBear},
+    {t:'First Date, The Gasp', d:'One hand over the mouth and a very good reaction.', img:V.firstSurprised.poster, video:V.firstSurprised},
+    {t:'First Date, After Dark', d:'The lights went down and we stayed close.', img:V.firstDark.poster, video:V.firstDark},
+    {t:'First Date, Puppy Ears', d:'Round one of the dog filter.', img:V.firstDogOne.poster, video:V.firstDogOne},
+    {t:'First Date, Puppy Ears Again', d:'Round two, because once was never enough.', img:V.firstDogTwo.poster, video:V.firstDogTwo},
+    {t:'The Goofy-ah Date', d:'Vibes filter on, faces completely serious. Mostly.', img:M.goofy},
+    {t:'Goofy-ah Date, Vibes Check', d:'The filter says vibes. The faces say a lot more.', img:V.goofyVibes.poster, video:V.goofyVibes},
+    {t:'Goofy-ah Date, Mask Mode', d:'Black masks, mall lights and zero seriousness. The longest clip in the collection.', img:V.goofyMask.poster, video:V.goofyMask},
+    {t:'Best Hand-Holding Place', d:'The communication lab, where holding hands needed no words.', img:M.handsLab},
+    {t:'One of Our Best Dates, Garden Portrait', d:'Sunlight, leaves and a pose that was definitely not planned.', img:M.bestGarden},
+    {t:'Best Date, Bridge Selfie', d:'Greenery everywhere and both of us grinning.', img:V.bestBridge.poster, video:V.bestBridge},
+    {t:'Best Date, The Climb', d:'Shot from above. The director did his own stunts.', img:V.bestClimb.poster, video:V.bestClimb},
+    {t:'Best Date, Green Rails', d:'A tilted selfie between the rails and the trees.', img:V.bestRails.poster, video:V.bestRails},
+    {t:'Best Date, Too Close', d:'Too close for the camera, which is exactly the right distance.', img:V.bestClose.poster, video:V.bestClose},
+    {t:'Barbeque Nation, Skewers', d:'The grill was hot and so was the bill.', img:M.bbqSkewers},
+    {t:'Barbeque Nation, Pani Puri', d:'Pani puri and a mocktail, because starters are the main event.', img:M.bbqPaniPuri},
+    {t:'Barbeque Nation, The Look', d:'Someone waited too long for the food. The camera caught it.', img:M.bbqLook},
+    {t:'Barbeque Nation, The Main Plate', d:'Dinner done properly, with a very full plate.', img:M.bbqThali},
+    {t:'Random Date, Red Lights', d:'A random date, a glowing red tower and no explanation needed.', img:V.redLights.poster, video:V.redLights},
+    {t:'Random Date, Alien Filter', d:'Aliens landed on the screen. We kept smiling.', img:V.alien.poster, video:V.alien},
+    {t:'Munnar, The Spontaneous Outing', d:'No plan until suddenly there was one.', img:V.munnar.poster, video:V.munnar},
+    {t:'Second Onam Together', d:'Sunglasses on, festival outfits out.', img:M.secondOnam},
+    {t:'Second Onam, Shades Close-Up', d:'Sunglasses, a smirk and a moustache that deserves credit.', img:V.secondCloseup.poster, video:V.secondCloseup},
+    {t:'Second Onam, Her Turn', d:'Her sunglasses, her pout, her camera.', img:V.secondShades.poster, video:V.secondShades},
+    {t:'Third Onam, Selfie', d:'Maroon shirt, orange saree and a selfie that says it all.', img:M.thirdOnam},
+    {t:'Third and Best Onam, Hand In Hand', d:'Matching colours and held hands. No words needed.', img:M.thirdHands},
+    {t:'Chundari', d:'Chundari means beautiful in Malayalam. This photo is why.', img:M.thirdSaree},
+    {t:'Third Onam, Snap Filter', d:'Sarees, a black mask lens and a screen recording of pure chaos.', img:V.thirdSnap.poster, video:V.thirdSnap},
+    {t:'Holi Together', d:'Wet hair, big smiles and zero regrets.', img:M.holi},
+    {t:'Matching Tees Day', d:'The black tees, the crowd and two people who matched on purpose.', img:M.tees},
+    {t:'Out In Black Tees', d:'A hilltop selfie in the same black tees, with a few photobombers behind us.', img:M.outingTees},
+    {t:'Out In Kozhikode', d:'A day around the city, dressed up and standing a little closer.', img:M.kozhikode},
+    {t:'Our Latest Trip, Traditional Pair', d:'Mundu and kurta, a quiet corner and one of our best moments.', img:M.tripPair},
+    {t:'Our Latest Trip, On The Lake', d:'Life jackets on, paddles out and no idea where we were going.', img:M.tripKayak},
+    {t:'Latest Trip, Kayaking', d:'Two paddles, one boat and a very uneven rowing technique.', img:V.kayak.poster, video:V.kayak},
+    {t:'The Stoopid Filter', d:'Giant glasses and a very silly, very perfect face.', img:V.sillyGlasses.poster, video:V.sillyGlasses},
+    {t:'When Our Eyes Crossed, Hers', d:'Close-ups. No filter needed.', img:M.eyesSandra},
+    {t:'When Our Eyes Crossed, His', d:'The other half of the close-up.', img:M.eyesSreelesh},
+    {t:'Eyes, Up Close', d:'A close-up of the eyes that started the series.', img:V.eyes.poster, video:V.eyes}
+  ],
+  quiz: [
+    {q:'It is 11 pm. Sandra says she is not hungry. What happens next?', o:[
+      ['Sreelesh orders food anyway','Correct. She ate half of it.'],
+      ['Sreelesh believes her','Rookie mistake. Try again next time.'],
+      ['Sreelesh orders two portions','The only safe answer.'],
+      ['They both pretend to be fine','Until the food arrives.']]},
+    {q:'Who sends the first good morning?', o:[
+      ['Sandra','Sreelesh pretends he was about to.'],
+      ['Sreelesh','Suspiciously early, for him.'],
+      ['Whoever wakes up first','A fair system with a lot of loopholes.'],
+      ['The group chat does it for them','Efficient.']]},
+    {q:'How does an argument usually end?', o:[
+      ['With food','Every single time.'],
+      ['With a hug','Cheating, but allowed.'],
+      ['With "fine." (it was not fine)','Round two starts in five minutes.'],
+      ['Both talking at once','Nobody remembers the topic.']]},
+    {q:'What is the plan this weekend?', o:[
+      ['Nothing, together','The best plan there is.'],
+      ['Something big, together','Sreelesh will forget the tickets.'],
+      ['Sleep, together','Bold and correct.'],
+      ['Ask Sreelesh','He is still working on it.']]}
+  ],
+  coupons: [
+    {t:'One Dinner, Your Pick', d:'No complaints about the location.'},
+    {t:'Zero Arguments Day', d:'Terms and conditions apply.'},
+    {t:'Unlimited Hugs', d:'No expiry date. No refunds.'}
+  ],
+  letter: 'Dear Sottu,\n\nThree years ago, I had no idea that an ordinary day could turn into the best decision I have ever made. I had no idea that one person could become such a huge part of my everyday life, or that someone could make even the most random and ordinary moments feel so special.\n\nSince then, you\'ve turned every plan into a better one, every bad day into a story we laugh about, and every quiet evening into something I\'d choose again. From our random outings and spontaneous trips to our silly pictures, endless conversations, little fights, and all those moments where we did absolutely nothing but still had the best time, I\'ve come to realise that it\'s never really about what we\'re doing. It\'s always about who I\'m doing it with.\n\nI don\'t think you realise how much happiness you\'ve brought into my life. The little things you do, the way you laugh, the way you annoy me, the way you look at me, and even the tiniest moments we share have become some of my favourite things. Sometimes I catch myself thinking about a random memory of us and smiling for absolutely no reason. And honestly, I hope I never stop doing that.\n\nI\'m not always the best at putting my feelings into words, and sometimes I probably fail to show you just how much you mean to me. So I built you a website instead. (Yes, I know. Very on brand.) I wanted to put together something that wasn\'t just another anniversary message, but something you could actually go through, revisit and smile at. Every picture, every episode, every little detail is a reminder of how far we\'ve come and how many memories we\'ve made along the way.\n\nThank you for being patient with me, for laughing at my stupid jokes, for putting up with me on the days I\'m impossible, and for loving me even when I make it unnecessarily difficult. Thank you for being my favourite person to share things with, whether it\'s something exciting, something completely pointless or just a random thought that crosses my mind.\n\nOf course, we haven\'t had the perfect three years. We\'ve had our ups and downs, our misunderstandings, our disagreements and our share of stupid moments. But if there\'s one thing I know, it\'s that I wouldn\'t trade this story for anything else. I don\'t want a perfect story. I don\'t want one where everything goes right all the time. I want this one. The messy, funny, unpredictable and beautiful one that belongs to us.\n\nAnd there\'s still so much I want to do with you. So many places to visit, so many pictures to take, so many random plans to make, so many late-night conversations to have and so many more memories waiting for us. I want to keep discovering new things about you, keep growing with you, keep annoying you and keep finding new reasons to fall in love with you.\n\nIf these three years have taught me anything, it\'s that I\'d happily choose you in all the little moments, not just the big ones. And if I had to go back and do it all over again, knowing everything I know now, I\'d still choose you. Every single time.\n\nHere\'s to our first three seasons, and hopefully a whole lot more renewals. I can\'t wait to see what the next episodes have in store for us.\n\nHappy 3rd anniversary sottuee\n\nI love you more than I probably manage to say, and I\'m so, so glad it\'s you.\nAlways yours,\nSreelesh ❤️',
+  credits: [
+    ['Starring','Sandra'],['Also starring','Sreelesh (reluctantly)'],['Cinematography',"Sreelesh's phone gallery"],
+    ['Catering','Every restaurant we tried'],['Music','Our playlist'],['Stunts','Whoever opened the jar'],['Special thanks','God and MEE']
+  ],
+  season4: [
+    ['E1','New places'],['E2','More late nights'],['E3','Bigger plans'],['E4','You tell me']
+  ],
+  need: 6,
+
+  /* ===== ADDED CONFIG (edit freely) ===== */
+
+  /* Timeline: every episode above has a date:'...' field. Only "Pilot" (8 Nov 2023), "Third and Best Onam"
+     (21 Aug 2026) and "The Anniversary Special" (8 Nov 2026) are certain. Check the others. */
+
+  /* Home photo crop, and the two secret tap spots on it (x, y = position inside the photo, r = size, all 0 to 1). */
+  heroPos: '44% 28%',
+  heroEggs: [ {x:.31,y:.34,r:.042}, {x:.60,y:.39,r:.055} ],
+  heroEggVideo: V.eyes,
+
+  /* Typing any of these anywhere (or in the search box) throws confetti. Add her pet names in lowercase. */
+  nicknames: ['sottu','sandra'],
+
+  /* "Previously on..." recap after the intro. ms = how long each slide stays. Total is about 20 seconds. */
+  recap: [
+    {img:M.whereStarted,  cap:'Season 1: it all started here',        ms:2400},
+    {video:V.firstBear,   cap:'The first date, bear hat included',    ms:2300},
+    {img:M.goofy,         cap:'Goofy dates, serious faces',           ms:2100},
+    {video:V.munnar,      cap:'A plan that was not a plan',           ms:2200},
+    {img:M.bbqLook,       cap:'The look',                             ms:2000},
+    {video:V.secondCloseup, cap:'Second Onam, sunglasses on',         ms:2200},
+    {img:M.thirdOnam,     cap:'Third Onam, still the best dressed',   ms:2300},
+    {video:V.kayak,       cap:'One wobbly kayak later',               ms:2200},
+    {img:M.thirdHands,    cap:'And now, the anniversary special',     ms:2300}
+  ],
+
+  /* Who Said It? SAMPLE LINES. Replace q with real lines from your chats and set a to 'her' or 'him'. */
+  whoSaid: [
+    {q:'I am not hungry. Are you going to finish that?', a:'her', note:'Classic. Every single time.'},
+    {q:'I will be there in five minutes.', a:'him', note:'Five minutes, as measured by Sreelesh.'},
+    {q:'Do not take a photo right now.', a:'her', note:'And then she posed anyway.'},
+    {q:'I have a plan. It is a surprise.', a:'him', note:'There was a plan. Eventually.'},
+    {q:'I am not sulking, I am just quiet.', a:'her', note:'Sulking. Confirmed.'},
+    {q:'Did you eat?', a:'her', note:'The most romantic sentence there is.'}
+  ],
+
+  /* Guess The Memory. t = the answer, fx/fy = where the blurry zoom lands (percent), optional. */
+  guess: [
+    {img:M.whereStarted, t:'Where it all started', fx:40, fy:45},
+    {img:M.firstLatte,   t:'First date: two lattes'},
+    {img:M.bbqLook,      t:'Barbeque Nation: the look', fx:35, fy:38},
+    {img:M.holi,         t:'Holi together', fx:55, fy:55},
+    {img:M.thirdSaree,   t:'Chundari', fx:50, fy:60},
+    {img:M.tees,         t:'Matching tees day', fx:40, fy:40}
+  ],
+
+  /* Scratch-Card Memories. */
+  memories: [
+    {img:M.firstLatte, t:'Two lattes, two hearts', d:'The cafe knew before we did.', pos:'center 85%'},  /* pos = which part of the photo shows */
+    {img:M.holi,       t:'Holi together',          d:'Wet hair, big smiles and zero regrets.'},
+    {img:M.tripPair,   t:'Mundu and kurta',        d:'A quiet corner on one of our best trips.'},
+    {img:M.handsLab,   t:'The hand-holding spot',  d:'No words needed.'}
+  ],
+
+  /* Open When letters. Each has a text, plus an optional img or video. */
+  openWhen: [
+    {when:'you miss me', text:"I am probably thinking about you right now too. I wish I could just magically appear beside you right now, pull you close and give you the biggest hug ever.\n\nI know there will be days when we can't be together as much as we'd like, but I hope you never forget that there's someone out here who thinks about you more than you probably realise. Someone who wishes you were there for even the smallest things.\n\nUntil I can see you again, just remember that you're always a little part of my every day, no matter how far apart we are.\n\nI love you dummy sottu mwuahhh ❤️", video:V.bestClose},
+    {when:'we fight', text:"Aloo ijj nthina kuttida chood avane paavalo naan..I know we won't always agree on everything. We'll misunderstand each other, get annoyed, say things we don't mean and sometimes let our emotions get the better of us. But I never want a silly argument or a bad day to make you question how much you mean to me.\n\nI don't want us to be two people trying to win an argument. I want us to be two people trying to understand each other. I'd rather fix things with you a thousand times than let my ego get in the way of something I never want to lose.\n\nI'm not perfect, and I know I have my flaws. I'll make mistakes, but I'll always want to learn, grow and become better for us.\n\nEven when I'm mad, even when things get difficult, it's still you. It's always going to be you.\n\nI love you. So now nirth okay?", img:M.bbqLook},
+    {when:'you need a laugh', text:"HELLOOOOO SOTTUU\n\nI genuinely have no idea what happened for you to end up here, but whatever it is, I officially order you to stop being sad for a little while.\n\nRemember that you voluntarily chose to be with ME? Out of all the people in this world? Honestly, your decision-making skills are questionable, but I'm very grateful for them.\n\nI wish I could be there right now to make stupid jokes, annoy you until you laugh, make weird faces and do literally anything to get that pretty smile back on your face.\n\nAnd if none of that works, just look at our pictures. Especially the ones where I look good and you look like you're about to question all your life decisions.\n\nAnyway, here's your reminder that you're ridiculously loved, incredibly special and unfortunately stuck with me.\n\nNow smile STOOPID. I love youuu. ❤️", video:V.sillyGlasses},
+    {when:'you cannot sleep', text:"Orakam varuunila sottunn? I wish I was there with you right now. I'd pull you closer, play with your hair, give you little forehead kisses and probably end up talking about the most random things until we both fall asleep.\n\nSometimes I think about those nights (Munnar poyapo and alapuzha) when you fell asleep in my arms and honestly, I don't think you realise how much those little moments mean to me. There's something so peaceful about having you close, knowing you're comfortable enough to just fall asleep beside me.\n\nI hope you know that you never have to pretend to be okay around me. You can tell me everything, talk about absolutely nothing, or just stay quiet. I'll always be happy to be your person.\n\nFor now, put that phone down, close those pretty eyes and get some rest.\n\nImagine me giving you the tightest hug ever.\n\nGoodnight, my favourite hoomann . I love you more than you know. ❤️", img:M.tripKayak},
+    {when:'you doubt yourself', text:"I really wish you could see yourself through my eyes, even just for a minute.\n\nYou have no idea how much I believe in you. I know there are days when things don't go as planned, when you question yourself, compare yourself to others or feel like you're not doing enough. But please don't be so hard on yourself.\n\nYou don't have to have everything figured out right now. You don't have to be perfect and you definitely don't have to prove your worth to anyone.\n\nI've seen you, I've watched you grow, and I know there's so much more you're capable of. Even on the days when you don't believe in yourself, I'll be right here reminding you of just how amazing you are.\n\nAnd please remember, I'm not just here for your best days, your achievements or when everything is going right. I want to be there for the messy days too.\n\nI'll always be your biggest supporter, your personal cheerleader and the annoying guy reminding you that YOU CAN DO IT.\n\nI believe in you, always. And I hope one day you learn to believe in yourself as much as I do.\n\nI love you sottuue. Never forget that. ❤️", img:M.thirdSaree}
+  ],
+
+  /* Map of Us. lat / lng place the pin on the outline of Kerala. side = which side the label sits on.
+     The Alappuzha pin: change lat/lng if needed. */
+  map: [
+    {name:'Kozhikode', lat:11.2588, lng:75.7804, side:'r', note:'A day out in the city, dressed up and standing a little closer.',
+      items:[{t:'Out in Kozhikode', img:M.kozhikode}]},
+    {name:'Munnar', lat:10.0889, lng:77.0595, side:'l', note:'No plan until suddenly there was one.',
+      items:[{t:'The spontaneous outing', img:V.munnar.poster, video:V.munnar}]},
+    {name:'Alappuzha', lat:9.4981, lng:76.3388, side:'r', note:'Traditional outfits, a quiet lake and one very wobbly kayak.',
+      items:[{t:'Mundu and kurta', img:M.tripPair},{t:'On the lake', img:M.tripKayak},{t:'Kayaking', img:V.kayak.poster, video:V.kayak}]}
+  ],
+
+  /* Post-credits scene (after the credits). */
+  postCredits: {video:V.secondShades, line:'P.S. You are still my favourite episode. See you in Season 4, Sandra.'},
+
+  /* Season 4 wishlist chips. */
+  wishlist: ['A beach weekend','Wayanad hills','Munnar again, planned this time','A houseboat night','Candlelight dinner','Movie night with snacks','Cook something together','A road trip with no map','A concert','Sunrise drive']
+};
+/* ============== END OF EDIT BLOCK ============== */
+
+const $=(s,r)=>(r||document).querySelector(s);
+const $$=(s,r)=>[].slice.call((r||document).querySelectorAll(s));
+const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const ICON={
+  play:'<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>',
+  info:'<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6M12 7.5v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+  lock:'<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" fill="currentColor"/><path d="M8 11V8a4 4 0 018 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
+  vol:'<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path d="M16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+  mute:'<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+};
+function face(c){return '<svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="'+c+'"/><circle cx="34" cy="42" r="6" fill="rgba(0,0,0,.65)"/><circle cx="66" cy="42" r="6" fill="rgba(0,0,0,.65)"/><path d="M28 62q22 22 44 0" fill="none" stroke="rgba(0,0,0,.65)" stroke-width="6" stroke-linecap="round"/></svg>';}
+function grad(i){var hs=[348,12,330,2,355,320,18,340,8,326],h=hs[i%hs.length];return 'linear-gradient(155deg,hsl('+h+' 62% 34%),hsl('+((h+28)%360)+' 55% 14%))';}
+function art(img,i){return img?'background-image:url("'+img+'"),'+grad(i):'background:'+grad(i);}
+
+/* ---------- sound ---------- */
+let soundOn=true,actx=null;
+function ac(){try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume();return actx;}catch(e){return null;}}
+function note(f,s,d,type,vol){
+  if(!soundOn)return;var a=ac();if(!a)return;
+  try{var t=a.currentTime+s,o=a.createOscillator(),g=a.createGain();
+    o.type=type||'sine';o.frequency.value=f;
+    g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(vol||.2,t+.05);g.gain.exponentialRampToValueAtTime(0.0001,t+d);
+    o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+d+.05);}catch(e){}
+}
+function sting(){note(65.4,0,1.2,'triangle',.3);note(98,.5,2,'triangle',.3);note(49,.5,2,'sine',.35);}
+function chime(){[523,659,784,1047].forEach(function(f,i){note(f,i*.12,.9,'triangle',.14);});}
+function setSnd(){$('#snd').innerHTML=soundOn?ICON.vol:ICON.mute;}
+
+/* ---------- toast + confetti ---------- */
+let tt;
+function toast(m){var t=$('#toast');t.textContent=m;t.hidden=false;t.style.animation='none';void t.offsetWidth;t.style.animation='';clearTimeout(tt);tt=setTimeout(function(){t.hidden=true;},2800);}
+const cv=$('#confetti'),cx=cv.getContext('2d');let parts=[],raf=0;
+function confetti(n){
+  cv.width=innerWidth;cv.height=innerHeight;
+  var cols=['#e5253a','#ff9fb2','#f3c969','#f6efef','#ffffff'],N=reduce?30:(n||160);
+  for(var i=0;i<N;i++)parts.push({x:Math.random()*cv.width,y:-20-Math.random()*cv.height*.4,vx:(Math.random()-.5)*3,vy:2+Math.random()*4,s:5+Math.random()*7,r:Math.random()*6,vr:(Math.random()-.5)*.3,c:cols[i%cols.length]});
+  if(!raf)tick();
+}
+function tick(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  parts.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.vy+=.03;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/3,p.s,p.s*.6);cx.restore();});
+  parts=parts.filter(function(p){return p.y<cv.height+30;});
+  if(parts.length){raf=requestAnimationFrame(tick);}else{raf=0;cx.clearRect(0,0,cv.width,cv.height);}
+}
+
+/* ---------- scratch card ---------- */
+function scratch(box,onDone){
+  var c=$('canvas',box),r=box.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2);
+  if(!r.width)return;
+  c.width=Math.round(r.width*dpr);c.height=Math.round(r.height*dpr);
+  var x=c.getContext('2d');x.scale(dpr,dpr);
+  var g=x.createLinearGradient(0,0,r.width,r.height);
+  g.addColorStop(0,'#b5a584');g.addColorStop(.5,'#efe3c2');g.addColorStop(1,'#a39375');
+  x.fillStyle=g;x.fillRect(0,0,r.width,r.height);
+  x.fillStyle='rgba(60,40,30,.55)';x.font='700 15px sans-serif';x.textAlign='center';x.textBaseline='middle';
+  x.fillText('SCRATCH HERE',r.width/2,r.height/2);
+  var down=false,done=false,lx=0,ly=0,n=0;
+  function pos(e){var b=c.getBoundingClientRect();return [e.clientX-b.left,e.clientY-b.top];}
+  function check(){
+    var d=x.getImageData(0,0,c.width,c.height).data,clear=0,tot=0;
+    for(var i=3;i<d.length;i+=64){tot++;if(d[i]===0)clear++;}
+    if(clear/tot>.5&&!done){done=true;c.style.opacity='0';c.style.pointerEvents='none';if(onDone)onDone();}
+  }
+  function move(e){
+    if(!down||done)return;var p=pos(e);
+    x.globalCompositeOperation='destination-out';x.lineWidth=38;x.lineCap='round';
+    x.beginPath();x.moveTo(lx,ly);x.lineTo(p[0],p[1]);x.stroke();
+    lx=p[0];ly=p[1];if(++n%6===0)check();
+  }
+  c.addEventListener('pointerdown',function(e){down=true;var p=pos(e);lx=p[0];ly=p[1];try{c.setPointerCapture(e.pointerId);}catch(_){}move(e);});
+  c.addEventListener('pointermove',move);
+  c.addEventListener('pointerup',function(){down=false;check();});
+  c.addEventListener('pointercancel',function(){down=false;});
+}
+
+/* ---------- sheet ---------- */
+const sheet=$('#sheet'),panel=$('#sheetPanel');
+function openSheet(html){
+  panel.innerHTML='<button class="sheet-close" aria-label="Close">&times;</button>'+html;
+  sheet.hidden=false;document.documentElement.classList.add('lock');
+  $('.sheet-close',panel).addEventListener('click',closeSheet);
+  panel.scrollTop=0;
+}
+function closeSheet(){
+  if(sheet.hidden)return;
+  panel.innerHTML='';sheet.hidden=true;
+  if($('#finale').hidden)document.documentElement.classList.remove('lock');
+}
+sheet.addEventListener('click',function(e){if(e.target===sheet)closeSheet();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSheet();});
+
+/* ---------- data ---------- */
+const seasons=CONFIG.seasons,all=[];
+seasons.forEach(function(s,si){s.episodes.forEach(function(e,ei){e.si=si;e.ei=ei;e.k=all.length;all.push(e);});});
+const NEED=Math.min(CONFIG.need,all.length);
+const watched=new Set();let curSeason=0,unlocked=false,finaleDone=false;
+
+/* ---------- renderers ---------- */
+function renderTabs(){
+  $('#seasonTabs').innerHTML=seasons.map(function(s,i){return '<button class="tab" role="tab" data-s="'+i+'" aria-selected="'+(i===curSeason)+'">Season '+(i+1)+': '+s.name+'</button>';}).join('');
+  $('#tagline').textContent=seasons[curSeason].tagline;
+}
+function renderList(){
+  $('#epList').innerHTML=seasons[curSeason].episodes.map(function(e){
+    return '<li><button class="ep" data-k="'+e.k+'"><span class="thumb" style=\''+art(e.img,e.k)+'\'><span class="pl">'+ICON.play+'</span></span>'+
+      '<span class="ep-body"><span class="ep-top"><b>'+(e.ei+1)+'. '+e.t+'</b><em>'+e.runtime+'</em></span>'+
+      (e.date?'<span class="ep-date">'+e.date+'</span>':'')+'<span class="ep-d">'+e.d+'</span>'+(watched.has(e.k)?'<span class="seenmark">Watched</span>':'')+'</span></button></li>';
+  }).join('');
+}
+function renderContinue(){
+  var list=all.filter(function(e){return !watched.has(e.k);}).slice(0,6);
+  $('#contRow').innerHTML=list.map(function(e){
+    return '<button class="wide" data-k="'+e.k+'"><span class="wide-art'+(e.img?' hasimg':'')+'" style=\''+art(e.img,e.k)+'\'></span><span class="wide-l">Season '+(e.si+1)+' · Episode '+(e.ei+1)+'</span><span class="wide-t">'+e.t+'</span><span class="prog"><i style="width:'+(25+((e.k*29)%55))+'%"></i></span></button>';
+  }).join('');
+  $('#contSec').hidden=!list.length;
+}
+function renderTop10(){
+  $('#t10Row').innerHTML=CONFIG.top10.map(function(t,i){
+    return '<div class="t10"><span class="num">'+(i+1)+'</span><span class="poster" style=\''+art(t.img,i)+'\'><b>'+t.t+'</b></span></div>';
+  }).join('');
+}
+function renderStatic(){
+  $('#revRow').innerHTML=CONFIG.reviews.map(function(r){return '<div class="review"><span class="stars" aria-label="'+r.s+' out of 5">'+'★'.repeat(r.s)+'☆'.repeat(5-r.s)+'</span><q>'+r.q+'</q><cite>'+r.c+'</cite></div>';}).join('');
+  $('#galRow').innerHTML=(CONFIG.gallery||[]).map(function(g,i){return '<button class="wide" data-g="'+i+'"><span class="wide-art hasimg" style=\''+art(g.img,i+3)+'\'></span><span class="wide-l">'+(g.video?'Video':'Photo')+'</span><span class="wide-t">'+g.t+'</span>'+(g.d?'<span class="wide-d">'+g.d+'</span>':'')+'</button>';}).join('');
+  $('#galSec').hidden=!(CONFIG.gallery&&CONFIG.gallery.length);
+  $('#syn').textContent=CONFIG.synopsis;
+  $('#heroPlay').innerHTML=ICON.play+' Play';
+  $('#heroInfo').innerHTML=ICON.info+' More Info';
+  if(CONFIG.heroImg){$('#heroArt').style.backgroundImage='url("'+CONFIG.heroImg+'")';$('#hero').classList.add('has-img');$('#heroArt').style.backgroundPosition=CONFIG.heroPos||'center 28%';}
+}
+function renderFinale(){
+  var n=watched.size,btn=$('#finBtn'),card=$('#finCard');
+  $('#finBar2').style.width=Math.min(100,n/NEED*100)+'%';
+  if(unlocked){
+    card.classList.add('ready');
+    $('#finTxt').textContent=finaleDone?'You have seen it. Want to watch the ending again?':'The season finale is ready. Grab something to drink first.';
+    btn.className='btn red';btn.innerHTML=ICON.play+(finaleDone?' Watch the finale again':' Play the finale');
+  }else{
+    $('#finTxt').textContent='Watch '+NEED+' episodes to unlock it. Progress: '+n+' of '+NEED+'.';
+    btn.className='btn ghost';btn.innerHTML=ICON.lock+' Locked';
+  }
+}
+function markWatched(k){
+  watched.add(k);renderList();renderContinue();
+  if(!unlocked&&watched.size>=NEED){unlocked=true;toast('The finale is unlocked. Scroll to the top.');}
+  renderFinale();
+}
+
+/* ---------- episode sheet ---------- */
+function openEpisode(k){
+  var e=all[k];if(!e)return;
+  var hasVid=!!e.video,vid=hasVid?'<video id="epVideo" controls playsinline preload="metadata" poster="'+e.video.poster+'" src="'+e.video.src+'" hidden></video>':'';
+  openSheet(
+    '<div class="sheet-media'+(hasVid&&e.video.portrait?' tall':'')+'" id="epMedia"><div class="sheet-art'+(e.img?'':' noimg')+'" style=\''+art(e.img,e.k)+'\'></div><div class="sheet-shade"></div>'+vid+
+    '<div class="sheet-cap" id="epCap">'+e.t+'</div><button class="big-play" id="bigPlay" aria-label="Play">'+ICON.play+'</button>'+
+    '<button class="skip" id="skipIntro" hidden>Skip Intro</button><div class="ebar" id="eBar"></div></div>'+
+    '<div class="sheet-body"><h3>'+e.t+'</h3>'+
+    '<div class="meta"><span class="match">98% Match</span><span>Season '+(e.si+1)+' · Episode '+(e.ei+1)+'</span><span>'+e.runtime+'</span>'+(e.date?'<span>'+e.date+'</span>':'')+'<span class="rate">HD</span></div>'+
+    '<p>'+e.d+'</p><div class="sheet-acts"><button class="btn" id="epPlay">'+ICON.play+' Play</button><button class="btn ghost" id="epNext">Next episode</button></div></div>'
+  );
+  markWatched(k);
+  var media=$('#epMedia'),bar=$('#eBar'),timer=0;
+  function play(){
+    if(hasVid){var v=$('#epVideo');v.hidden=false;$('#bigPlay').hidden=true;$('#epCap').hidden=true;v.play().catch(function(){});return;}
+    clearTimeout(timer);bar.style.transition='none';bar.style.width='0';void bar.offsetWidth;
+    media.classList.remove('playing');void media.offsetWidth;media.classList.add('playing');
+    bar.style.transition='width 6s linear';bar.style.width='100%';
+    var sk=$('#skipIntro');sk.hidden=false;setTimeout(function(){sk.hidden=true;},4000);
+    $('#epPlay').innerHTML=ICON.play+' Play again';
+    timer=setTimeout(function(){media.classList.remove('playing');toast('Episode finished. Next one starts whenever you want.');},6200);
+  }
+  $('#bigPlay').addEventListener('click',play);
+  $('#epPlay').addEventListener('click',play);
+  $('#skipIntro').addEventListener('click',function(){toast('Skip Intro is disabled. The intro is the best part.');});
+  $('#epNext').addEventListener('click',function(){
+    if(all[k+1]){openEpisode(k+1);}else{closeSheet();toast('That was the last episode. The finale is waiting.');}
+  });
+  if(hasVid)play();
+}
+function openInfo(){
+  openSheet(
+    '<div class="sheet-media"><div class="sheet-art noimg" style=\''+(CONFIG.heroImg?'background-image:url("'+CONFIG.heroImg+'"),'+grad(0):'background:'+grad(0))+'\'></div><div class="sheet-shade"></div><div class="sheet-cap">Life of '+CONFIG.her+' &amp; '+CONFIG.him+'</div></div>'+
+    '<div class="sheet-body"><div class="meta"><span class="match">98% Match</span><span>2023</span><span>3 Seasons</span><span class="rate">U/A Unlimited Affection</span></div>'+
+    '<p>'+CONFIG.synopsis+'</p>'+
+    '<dl class="cast"><dt>Starring</dt><dd>'+CONFIG.her+', '+CONFIG.him+'</dd><dt>Created by</dt><dd>'+CONFIG.him+'</dd><dt>Genres</dt><dd>Romantic, Comedy, Slow Burn</dd><dt>This series is</dt><dd>Heartwarming, Funny, Occasionally Dramatic</dd><dt>Streaming since</dt><dd>8 November 2023</dd></dl></div>'
+  );
+}
+
+function openMedia(i){
+  var m=(CONFIG.gallery||[])[i];if(!m)return;
+  var top=m.video?'<div class="sheet-media'+(m.video.portrait?' tall':'')+'"><video controls playsinline autoplay poster="'+m.video.poster+'" src="'+m.video.src+'"></video></div>':'<img class="sheet-photo" src="'+m.img+'" alt="'+m.t+'">';
+  openSheet(top+'<div class="sheet-body"><h3>'+m.t+'</h3><p>'+(m.d||'')+'</p></div>');
+}
+
+/* ---------- counter ---------- */
+const startDate=new Date(CONFIG.start);
+function span(a,b){
+  var y=b.getFullYear()-a.getFullYear(),mo=b.getMonth()-a.getMonth(),d=b.getDate()-a.getDate(),h=b.getHours()-a.getHours(),mi=b.getMinutes()-a.getMinutes(),s=b.getSeconds()-a.getSeconds();
+  if(s<0){s+=60;mi--;}if(mi<0){mi+=60;h--;}if(h<0){h+=24;d--;}
+  if(d<0){d+=new Date(b.getFullYear(),b.getMonth(),0).getDate();mo--;}
+  if(mo<0){mo+=12;y--;}
+  return {y:y,mo:mo,d:d,h:h,mi:mi,s:s};
+}
+function buildCounter(){
+  var labels=[['y','Years'],['mo','Months'],['d','Days'],['h','Hours'],['mi','Min'],['s','Sec']];
+  $('#counter').innerHTML=labels.map(function(l){return '<div class="u"><b id="c_'+l[0]+'">0</b><span>'+l[1]+'</span></div>';}).join('');
+  function upd(){
+    var now=new Date();if(now<startDate)now=startDate;
+    var r=span(startDate,now);
+    labels.forEach(function(l){$('#c_'+l[0]).textContent=r[l[0]];});
+    $('#cDays').textContent=Math.floor((now-startDate)/864e5).toLocaleString();
+  }
+  upd();setInterval(upd,1000);
+}
+
+/* ---------- memory match ---------- */
+function initMatch(){
+  var grid=$('#matchGrid'),deck=CONFIG.match.concat(CONFIG.match).map(function(c){return c;});
+  for(var i=deck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=deck[i];deck[i]=deck[j];deck[j]=t;}
+  grid.innerHTML=deck.map(function(c,i){
+    return '<button class="mcard" data-k="'+c.k+'" aria-label="Card '+(i+1)+'"><span class="mface mback">S&amp;S</span><span class="mface mfront" style=\'--g:'+grad(c.h)+'\'>'+(c.img?'<i style=\'background-image:url("'+c.img+'")\'></i>':'')+'<b>'+c.k+'</b></span></button>';
+  }).join('');
+  var first=null,lock=false,moves=0,found=0;
+  $('#mMoves').textContent='0';$('#mPairs').textContent='0';$('#mMsg').textContent='';
+  $$('.mcard',grid).forEach(function(card){
+    card.addEventListener('click',function(){
+      if(lock||card.classList.contains('on'))return;
+      card.classList.add('on');
+      if(!first){first=card;return;}
+      moves++;$('#mMoves').textContent=moves;
+      if(first.dataset.k===card.dataset.k){
+        first.classList.add('done');card.classList.add('done');first=null;found++;$('#mPairs').textContent=found;
+        if(found===CONFIG.match.length){$('#mMsg').textContent='Every pair found in '+moves+' moves. As usual, you remembered everything.';confetti(90);chime();}
+      }else{
+        lock=true;var a=first;first=null;
+        setTimeout(function(){a.classList.remove('on');card.classList.remove('on');lock=false;},800);
+      }
+    });
+  });
+}
+
+/* ---------- quiz ---------- */
+let qi=0;
+function renderQuiz(){
+  var body=$('#quizBody'),Q=CONFIG.quiz;
+  if(qi>=Q.length){
+    body.innerHTML='<div class="q-big">100% Match</div><p>This quiz has no wrong answers, just like the best parts of this relationship. Mostly.</p><div style="margin-top:12px"><button class="btn ghost" id="qAgain">Play again</button></div>';
+    confetti(70);chime();
+    $('#qAgain').addEventListener('click',function(){qi=0;renderQuiz();});return;
+  }
+  var q=Q[qi];
+  body.innerHTML='<p class="kicker" style="margin-bottom:6px">Question '+(qi+1)+' of '+Q.length+'</p><p style="font-weight:700;margin-bottom:10px">'+q.q+'</p><div class="q-opts">'+
+    q.o.map(function(o,i){return '<button class="q-opt" data-i="'+i+'">'+o[0]+'</button>';}).join('')+
+    '</div><p class="q-res" id="qRes" style="margin-top:10px"></p><div><button class="btn" id="qNext" hidden>'+(qi===Q.length-1?'See my result':'Next question')+'</button></div>';
+  $$('.q-opt',body).forEach(function(b){
+    b.addEventListener('click',function(){
+      $$('.q-opt',body).forEach(function(x){x.disabled=true;});
+      b.classList.add('picked');$('#qRes').textContent=q.o[+b.dataset.i][1];$('#qNext').hidden=false;
+    });
+  });
+  $('#qNext').addEventListener('click',function(){qi++;renderQuiz();});
+}
+
+/* ---------- coupons ---------- */
+let couponsReady=false;
+function initCoupons(){
+  if(couponsReady)return;couponsReady=true;
+  var wrap=$('#coupons');
+  wrap.innerHTML=CONFIG.coupons.map(function(c){return '<div class="scratch coupon"><div class="reveal"><h4>'+c.t+'</h4><p>'+c.d+'</p></div><canvas></canvas></div>';}).join('');
+  $$('.coupon',wrap).forEach(function(b){scratch(b,function(){chime();});});
+}
+
+/* ---------- letter ---------- */
+let typing=false;
+function initLetter(){
+  var audio='';
+  if(CONFIG.voiceNote)audio+='<div class="aud"><p class="hint">A voice note from '+CONFIG.him+'</p><audio controls preload="metadata" src="'+CONFIG.voiceNote+'"></audio></div>';
+  if(CONFIG.song)audio+='<div class="aud"><p class="hint">Our song</p><audio controls preload="metadata" src="'+CONFIG.song+'"></audio></div>';
+  $('#letterAudio').innerHTML=audio;
+  $$('#letterAudio audio').forEach(function(a){a.addEventListener('error',function(){a.parentNode.hidden=true;});});
+  var el=$('#letterText'),L=CONFIG.letter;
+  $('#openLetter').addEventListener('click',function(){
+    this.hidden=true;el.hidden=false;el.classList.add('typing');typing=true;var i=0;
+    (function step(){
+      if(!typing)return;
+      i+=Math.max(1,Math.ceil(L.length/1500));if(i>L.length)i=L.length;
+      el.textContent=L.slice(0,i);
+      if(i<L.length){setTimeout(step,reduce?0:26);}else{typing=false;el.classList.remove('typing');}
+    })();
+  });
+  el.addEventListener('click',function(){if(typing){typing=false;el.textContent=L;el.classList.remove('typing');}});
+}
+
+/* ---------- finale ---------- */
+function stage(n){$$('.fin-stage').forEach(function(s){s.hidden=String(s.dataset.stage)!==String(n);});$('#finale').scrollTop=0;}
+function startFinale(){
+  var fin=$('#finale');fin.hidden=false;document.documentElement.classList.add('lock');
+  stage(1);sting();
+  var lines=['Uploading 1,096 days of memories...','Buffering feelings...','Checking that Sandra is watching...','Locating your surprise...','Almost ready. Do not blink.'],i=0,bar=$('#finBar'),line=$('#finLine');
+  bar.style.transition='none';bar.style.width='0';void bar.offsetWidth;
+  bar.style.transition='width 7.5s linear';bar.style.width='100%';
+  line.textContent=lines[0];
+  var iv=setInterval(function(){i++;if(i<lines.length){line.textContent=lines[i];}},1500);
+  setTimeout(function(){clearInterval(iv);playGiftVideo(function(){stage(2);confetti(200);chime();});},7600);
+}
+function playGiftVideo(cb){
+  var gv=CONFIG.giftVideo;if(!gv||!gv.src){cb();return;}
+  var box=$('#giftVid'),v=$('#gvVideo'),tap=$('#gvTap'),done=false,guard=0;
+  function finish(){
+    if(done)return;done=true;clearTimeout(guard);try{v.pause();}catch(e){}
+    box.hidden=true;
+    try{if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen();}catch(e){}
+    cb();
+  }
+  v.poster=gv.poster||'';v.src=gv.src;box.hidden=false;tap.hidden=true;
+  v.muted=false;try{v.currentTime=0;}catch(e){}
+  function mutedTry(){
+    v.muted=true;var q=v.play();
+    if(q&&q.then)q.then(function(){tap.textContent='Tap for sound';tap.hidden=false;}).catch(function(){tap.textContent='Tap to play';tap.hidden=false;});
+  }
+  var p=v.play();if(p&&p.catch)p.catch(mutedTry);
+  tap.onclick=function(){v.muted=false;var r=v.play();if(r&&r.catch)r.catch(function(){});tap.hidden=true;};
+  var end=$('#gvEnd');end.hidden=true;
+  v.onended=function(){clearTimeout(guard);end.hidden=false;};
+  $('#gvReplay').onclick=function(){end.hidden=true;try{v.currentTime=0;}catch(e){}v.muted=false;var r=v.play();if(r&&r.catch)r.catch(function(){v.muted=true;v.play();});};
+  $('#gvNext').onclick=finish;
+  v.onerror=function(){tap.textContent='Video could not load. Tap to continue';tap.hidden=false;tap.onclick=finish;};
+  v.onloadedmetadata=function(){clearTimeout(guard);guard=setTimeout(finish,(isFinite(v.duration)?v.duration:30)*1000+8000);};
+  guard=setTimeout(function(){if(v.currentTime===0)finish();},45000);
+}
+let giftReady=false;
+function showGift(){
+  stage(3);
+  $('#nkHey').textContent='Hey '+CONFIG.giftTo+', '+CONFIG.giftFrom+' has sent you a gift card!';
+  $('#nkMsg').innerHTML='<b>Hi '+esc(CONFIG.giftTo)+'</b><br>'+esc(CONFIG.giftMessage);
+  $('#nkBal').textContent=CONFIG.giftBalance;$('#nkExp').textContent=CONFIG.giftExpiry;
+  $('#giftCode').textContent=CONFIG.giftCode;$('#giftPin').textContent=CONFIG.giftPin;
+  if(!giftReady){
+    giftReady=true;
+    scratch($('#giftBox'),function(){
+      $('#giftActs').hidden=false;$('#fin3next').hidden=false;$('#giftHint').textContent='Happy anniversary, Sandra.';
+      confetti(220);chime();
+    });
+  }
+}
+function showCredits(){
+  stage(4);
+  var inn=$('#creditsIn');
+  inn.innerHTML=CONFIG.credits.map(function(c){return '<div><p>'+c[0]+'</p><b>'+c[1]+'</b></div>';}).join('')+'<div><p>No hearts were harmed in the making of this series.</p><b>A few were stolen.</b></div>';
+  inn.style.animation='none';void inn.offsetWidth;inn.style.animation='';
+  inn.addEventListener('animationend',function(){if(!$('#finale').hidden&&!$('[data-stage="4"]').hidden)showPostCredits();},{once:true});
+}
+function showSeason4(){
+  stage(5);
+  $('#s4List').innerHTML=CONFIG.season4.map(function(s){return '<li><b>'+s[0]+'</b> &nbsp;'+s[1]+'</li>';}).join('');
+  $('#planBox').hidden=true;$('#wishBox').hidden=false;$('#renewBox').hidden=false;$('#backSeries').hidden=true;$('#renewQ').textContent='Renew for Season 4?';
+  renderWish();
+}
+function closeFinale(){
+  $('#finale').hidden=true;document.documentElement.classList.remove('lock');
+  finaleDone=true;renderFinale();updateUs();window.scrollTo(0,0);
+}
+function updateUs(){
+  var av=$('#avUs');
+  av.innerHTML=face('#e0a82e')+(finaleDone?'':'<span class="lockv">'+ICON.lock+'</span>');
+}
+
+/* ---------- added features ---------- */
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function typeInto(el,text,speed,done){var i=0;(function step(){el.textContent=text.slice(0,++i);if(i<text.length){setTimeout(step,reduce?0:speed);}else if(done){done();}})();}
+function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+
+/* recap */
+let recapOver=false,recapTimer=0;
+function preloadRecap(){(CONFIG.recap||[]).forEach(function(r){if(r.img){var im=new Image();im.src=r.img;}});}
+function showProfilesOverlay(){$('#profiles').hidden=false;}
+function startRecap(){
+  var R=CONFIG.recap||[],box=$('#recap');
+  if(!R.length){showProfilesOverlay();return;}
+  var st=$('#recapStage'),total=0;
+  R.forEach(function(r){total+=r.ms||2200;});
+  st.innerHTML=R.map(function(r){
+    var bg=r.video?r.video.poster:r.img;
+    var media=r.video?'<video class="rmedia" muted loop playsinline preload="auto" poster="'+r.video.poster+'" src="'+r.video.src+'"></video>':'<img class="rmedia" alt="" src="'+r.img+'" style="animation-duration:'+((r.ms||2200)+600)+'ms">';
+    return '<div class="rslide"><div class="rbg" style=\'background-image:url("'+bg+'")\'></div>'+media+'</div>';
+  }).join('');
+  box.hidden=false;recapOver=false;
+  var slides=$$('.rslide',st),i=-1,bar=$('#recapBar');
+  bar.style.transition='none';bar.style.width='0';void bar.offsetWidth;
+  bar.style.transition='width '+total+'ms linear';bar.style.width='100%';
+  function next(){
+    if(recapOver)return;
+    if(i>=0){slides[i].classList.remove('on');var pv=$('video',slides[i]);if(pv){try{pv.pause();}catch(e){}}}
+    i++;
+    if(i>=slides.length){finishRecap();return;}
+    var sl=slides[i];sl.classList.add('on');
+    var v=$('video',sl);if(v){try{v.currentTime=0;}catch(e){}var p=v.play();if(p&&p.catch)p.catch(function(){});}
+    $('#recapCap').textContent=R[i].cap||'';
+    recapTimer=setTimeout(next,R[i].ms||2200);
+  }
+  $('#recapSkip').onclick=finishRecap;
+  next();
+}
+function finishRecap(){
+  if(recapOver)return;recapOver=true;clearTimeout(recapTimer);
+  $$('#recapStage video').forEach(function(v){try{v.pause();}catch(e){}});
+  $('#recap').hidden=true;$('#recapStage').innerHTML='';
+  showProfilesOverlay();
+}
+
+/* secret nickname */
+let nickAt=0,keyBuf='';
+function checkNick(str){
+  var N=CONFIG.nicknames||[];if(!str||Date.now()-nickAt<4000)return false;
+  for(var i=0;i<N.length;i++){
+    if(str.indexOf(String(N[i]).toLowerCase())>-1){nickAt=Date.now();keyBuf='';confetti(150);chime();toast('There she is.');return true;}
+  }
+  return false;
+}
+
+/* hero easter egg */
+const heroNat={w:0,h:0};
+function parsePos(v){return v==='center'?.5:v==='left'||v==='top'?0:v==='right'||v==='bottom'?1:(parseFloat(v)||50)/100;}
+function placeEggs(){
+  var hero=$('#hero'),box=$('#heroEggs'),E=CONFIG.heroEggs||[];
+  if(!CONFIG.heroImg||!E.length){box.innerHTML='';return;}
+  if(!heroNat.w){
+    var im=new Image();im.onload=function(){heroNat.w=im.naturalWidth;heroNat.h=im.naturalHeight;placeEggs();};im.src=CONFIG.heroImg;return;
+  }
+  var W=hero.clientWidth,H=hero.clientHeight;if(!W||!H)return;
+  var sc=Math.max(W/heroNat.w,H/heroNat.h),dw=heroNat.w*sc,dh=heroNat.h*sc,pp=(CONFIG.heroPos||'center 28%').split(' ');
+  var ox=(W-dw)*parsePos(pp[0]),oy=(H-dh)*parsePos(pp[1]||'50%');
+  box.innerHTML=E.map(function(e,i){
+    var r=e.r*dw,cx=ox+e.x*dw,cy=oy+e.y*dh;
+    return '<button class="egg" data-egg="'+i+'" aria-label="Photo detail" style="left:'+(cx-r).toFixed(1)+'px;top:'+(cy-r).toFixed(1)+'px;width:'+(2*r).toFixed(1)+'px;height:'+(2*r).toFixed(1)+'px"></button>';
+  }).join('');
+}
+function openEgg(){
+  var v=CONFIG.heroEggVideo;if(!v)return;
+  openSheet('<div class="sheet-media"><video controls playsinline autoplay poster="'+v.poster+'" src="'+v.src+'"></video></div><div class="sheet-body"><h3>You found the secret</h3><p>Hidden in plain sight since the first photo. A little eye contact, up close.</p></div>');
+  confetti(80);chime();
+}
+
+/* search */
+function buildSearch(){
+  var idx=[];
+  all.forEach(function(e){idx.push({t:e.t,sub:'Episode, Season '+(e.si+1)+(e.date?' - '+e.date:''),s:(e.t+' '+e.d+' '+(e.date||'')).toLowerCase(),go:function(){openEpisode(e.k);}});});
+  (CONFIG.gallery||[]).forEach(function(g,i){idx.push({t:g.t,sub:g.video?'Video':'Photo',s:(g.t+' '+(g.d||'')).toLowerCase(),go:function(){openMedia(i);}});});
+  (CONFIG.map||[]).forEach(function(p,i){idx.push({t:p.name,sub:'On the map',s:(p.name+' '+(p.note||'')).toLowerCase(),go:function(){openPin(i);}});});
+  var inp=$('#srchIn'),res=$('#srchRes');
+  function run(){
+    var q=inp.value.trim().toLowerCase();
+    checkNick(q);
+    if(!q){res.innerHTML='';return;}
+    var words=q.split(/\s+/);
+    var hits=idx.filter(function(x){return words.every(function(w){return x.s.indexOf(w)>-1;});}).slice(0,8);
+    res.innerHTML=hits.length?hits.map(function(h,i){return '<button data-h="'+i+'"><b>'+h.t+'</b><small>'+h.sub+'</small></button>';}).join(''):'<p style="color:var(--muted);margin-top:6px">No matches. Try a place, a food or a feeling.</p>';
+    $$('button',res).forEach(function(b,i){b.addEventListener('click',function(){hits[i].go();});});
+  }
+  inp.addEventListener('input',run);
+  $('#srchBtn').addEventListener('click',function(){var row=$('#searchRow');row.hidden=!row.hidden;if(!row.hidden){inp.focus();}});
+}
+
+/* Who Said It? */
+let wi=0,wscore=0;
+function renderWho(){
+  var body=$('#whoBody'),Q=CONFIG.whoSaid||[];
+  if(!Q.length){$('#whoPanel').hidden=true;return;}
+  if(wi>=Q.length){
+    body.innerHTML='<div class="q-big">'+wscore+' / '+Q.length+'</div><p>'+(wscore>=Q.length-1?'You know us far too well.':wscore>=Q.length/2?'Not bad. A few close calls.':'Time to read the old chats again.')+'</p><div style="margin-top:12px"><button class="btn ghost" id="wAgain">Play again</button></div>';
+    if(wscore>=Q.length-1){confetti(70);chime();}
+    $('#wAgain').addEventListener('click',function(){wi=0;wscore=0;renderWho();});return;
+  }
+  var q=Q[wi];
+  body.innerHTML='<p class="kicker" style="margin-bottom:8px">Line '+(wi+1)+' of '+Q.length+'</p><div class="bubble">“'+q.q+'”</div><div class="who-btns" style="margin-top:12px"><button class="who-btn" data-a="her">'+CONFIG.her+'</button><button class="who-btn" data-a="him">'+CONFIG.him+'</button></div><p class="q-res" id="wRes" style="margin-top:10px"></p><div><button class="btn" id="wNext" hidden>'+(wi===Q.length-1?'See my score':'Next line')+'</button></div>';
+  $$('.who-btn',body).forEach(function(b){
+    b.addEventListener('click',function(){
+      var ok=b.dataset.a===q.a;if(ok)wscore++;
+      $$('.who-btn',body).forEach(function(x){x.disabled=true;if(x.dataset.a===q.a)x.classList.add('right');});
+      if(!ok)b.classList.add('wrong');
+      $('#wRes').textContent=(ok?'Correct. ':'It was '+(q.a==='her'?CONFIG.her:CONFIG.him)+'. ')+(q.note||'');
+      $('#wNext').hidden=false;
+    });
+  });
+  $('#wNext').addEventListener('click',function(){wi++;renderWho();});
+}
+
+/* Guess The Memory */
+let gi=0,gscore=0;
+function renderGuess(){
+  var body=$('#guessBody'),G=CONFIG.guess||[];
+  if(!G.length){$('#guessPanel').hidden=true;return;}
+  if(gi>=G.length){
+    body.innerHTML='<div class="q-big">'+gscore+' / '+G.length+'</div><p>'+(gscore===G.length?'Every single memory. Perfect recall.':'Some of those were blurry on purpose.')+'</p><div style="margin-top:12px"><button class="btn ghost" id="gAgain">Play again</button></div>';
+    if(gscore===G.length){confetti(70);chime();}
+    $('#gAgain').addEventListener('click',function(){gi=0;gscore=0;renderGuess();});return;
+  }
+  var g=G[gi],others=shuffle(G.filter(function(x,i){return i!==gi;})).slice(0,3).map(function(x){return x.t;}),opts=shuffle(others.concat([g.t]));
+  var ox=(g.fx!=null?g.fx:25+Math.random()*50),oy=(g.fy!=null?g.fy:25+Math.random()*50);
+  body.innerHTML='<p class="kicker" style="margin-bottom:8px">Memory '+(gi+1)+' of '+G.length+'</p><div class="guess-frame" id="gFrame" style="--ox:'+ox+'%;--oy:'+oy+'%"><img alt="" src="'+g.img+'"></div><div class="q-opts" style="margin-top:12px">'+
+    opts.map(function(o){return '<button class="q-opt" data-o="'+esc(o)+'">'+o+'</button>';}).join('')+
+    '</div><p class="q-res" id="gRes" style="margin-top:10px"></p><div><button class="btn" id="gNext" hidden>'+(gi===G.length-1?'See my score':'Next memory')+'</button></div>';
+  $$('.q-opt',body).forEach(function(b){
+    b.addEventListener('click',function(){
+      var ok=b.dataset.o===g.t;if(ok)gscore++;
+      $$('.q-opt',body).forEach(function(x){x.disabled=true;if(x.dataset.o===g.t){x.classList.add('picked');}});
+      $('#gFrame').classList.add('revealed');
+      $('#gRes').textContent=ok?'Yes. '+g.t+'.':'It was: '+g.t+'.';
+      $('#gNext').hidden=false;
+    });
+  });
+  $('#gNext').addEventListener('click',function(){gi++;renderGuess();});
+}
+
+/* Scratch-Card Memories */
+let memsReady=false;
+function initMemories(){
+  if(memsReady)return;memsReady=true;
+  var wrap=$('#memCards'),M2=CONFIG.memories||[];
+  if(!M2.length){$('#memSec').hidden=true;return;}
+  wrap.innerHTML=M2.map(function(m){return '<div class="scratch mem"><div class="reveal"><i style=\'background-image:url("'+m.img+'");background-position:'+(m.pos||'center top')+'\'></i><div class="cap"><b>'+m.t+'</b><span>'+m.d+'</span></div></div><canvas></canvas></div>';}).join('');
+  $$('.mem',wrap).forEach(function(b){scratch(b,function(){chime();});});
+}
+
+/* Open When letters */
+function renderOpenWhen(){
+  var L=CONFIG.openWhen||[];
+  if(!L.length){$('#openSec').hidden=true;return;}
+  $('#envs').innerHTML=L.map(function(o,i){
+    return '<button class="env" data-i="'+i+'"><span class="env-flap"></span><span class="env-seal">'+ICON.lock+'</span><span class="env-body"><small>Open when</small><b>'+o.when+'</b></span></button>';
+  }).join('');
+  $$('.env').forEach(function(b){
+    b.addEventListener('click',function(){
+      var o=L[+b.dataset.i];
+      var media=o.video?'<video class="ow-media" controls playsinline autoplay poster="'+o.video.poster+'" src="'+o.video.src+'"></video>':(o.img?'<img class="ow-media" alt="" src="'+o.img+'">':'');
+      openSheet('<div class="sheet-body"><p class="kicker">Open when '+o.when+'</p><div class="paper" style="transform:none"><p class="lt">'+o.text+'</p></div>'+media+'</div>');
+      b.classList.add('opened');$('.env-seal',b).innerHTML=ICON.play;chime();
+    });
+  });
+}
+
+/* Map of Us */
+const KERALA=[[12.78,74.95],[12.50,74.98],[12.20,75.10],[11.87,75.37],[11.60,75.58],[11.25,75.77],[10.78,75.92],[10.57,76.02],[10.23,76.19],[9.97,76.24],[9.50,76.32],[8.89,76.58],[8.73,76.70],[8.50,76.93],[8.33,77.07],
+  [8.34,77.15],[8.60,77.18],[8.85,77.26],[9.10,77.22],[9.45,77.17],[9.70,77.22],[9.95,77.28],[10.15,77.30],[10.33,77.20],[10.40,77.00],[10.50,76.85],[10.65,76.82],[10.85,76.80],[11.05,76.72],[11.25,76.50],[11.50,76.28],[11.72,76.08],[11.95,75.95],[12.12,75.62],[12.40,75.40],[12.70,75.20],[12.78,75.05]];
+function proj(lat,lng){return [(lng-74.7)*100,(12.95-lat)*100];}
+function renderMap(){
+  var P=CONFIG.map||[];
+  if(!P.length){$('#mapSec').hidden=true;return;}
+  var d='M'+KERALA.map(function(c){var p=proj(c[0],c[1]);return p[0].toFixed(1)+' '+p[1].toFixed(1);}).join('L')+'Z';
+  var pts=P.map(function(p){return proj(p.lat,p.lng);});
+  var route='M'+pts.map(function(p){return p[0].toFixed(1)+' '+p[1].toFixed(1);}).join('L');
+  var pins=P.map(function(p,i){
+    var q=pts[i],left=p.side==='l';
+    return '<g class="pin" data-i="'+i+'" tabindex="0" role="button" aria-label="'+esc(p.name)+'"><circle class="halo" cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)+'" r="9"></circle><circle class="dot" cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)+'" r="6.5"></circle><text x="'+(q[0]+(left?-14:14)).toFixed(1)+'" y="'+(q[1]+4).toFixed(1)+'" text-anchor="'+(left?'end':'start')+'">'+p.name+'</text></g>';
+  }).join('');
+  $('#mapSvg').innerHTML='<path class="kerala" d="'+d+'"></path><text class="sea" x="12" y="250" transform="rotate(-90 12 250)" text-anchor="middle">Arabian Sea</text><path class="route" d="'+route+'"></path>'+pins;
+  $('#places').innerHTML=P.map(function(p,i){return '<button class="place" data-i="'+i+'"><b>'+p.name+'</b><small>'+p.items.length+(p.items.length===1?' memory':' memories')+' - tap to open</small></button>';}).join('');
+  $$('#mapSvg .pin').forEach(function(g){
+    g.addEventListener('click',function(){openPin(+g.dataset.i);});
+    g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openPin(+g.dataset.i);}});
+  });
+  $$('#places .place').forEach(function(b){b.addEventListener('click',function(){openPin(+b.dataset.i);});});
+}
+function openPin(i){
+  var p=(CONFIG.map||[])[i];if(!p)return;
+  openSheet('<div id="pinMain"></div><div class="sheet-body"><h3>'+p.name+'</h3><p>'+p.note+'</p><div class="pthumbs" id="pinThumbs">'+
+    p.items.map(function(it,k){return '<button class="pthumb" data-i="'+k+'" aria-label="'+esc(it.t)+'" aria-pressed="false" style=\''+art(it.img,k)+'\'>'+(it.video?'<span class="pl">'+ICON.play+'</span>':'')+'</button>';}).join('')+
+    '</div><p style="color:var(--muted);font-size:13px" id="pinCap"></p></div>');
+  function show(k,auto){
+    var it=p.items[k];
+    $('#pinMain').innerHTML=it.video?'<div class="sheet-media'+(it.video.portrait?' tall':'')+'"><video controls playsinline '+(auto?'autoplay ':'')+'poster="'+it.video.poster+'" src="'+it.video.src+'"></video></div>':'<img class="sheet-photo" alt="'+esc(it.t)+'" src="'+it.img+'">';
+    $('#pinCap').textContent=it.t;
+    $$('#pinThumbs .pthumb').forEach(function(b,j){b.setAttribute('aria-pressed',String(j===k));});
+  }
+  show(0,true);
+  $$('#pinThumbs .pthumb').forEach(function(b){b.addEventListener('click',function(){show(+b.dataset.i,true);});});
+}
+
+/* post-credits scene */
+let pcToken=0;
+function showPostCredits(){
+  var pc=CONFIG.postCredits;
+  if(!pc){showSeason4();return;}
+  stage(6);
+  var box=$('#pc'),tok=++pcToken;
+  box.classList.remove('on');$('#pcLine').textContent='';$('#pcNext').hidden=true;
+  $('#pcMedia').innerHTML=pc.video?'<video playsinline loop poster="'+pc.video.poster+'" src="'+pc.video.src+'"></video>':(pc.img?'<img alt="" src="'+pc.img+'">':'');
+  setTimeout(function(){
+    if(tok!==pcToken||$('#finale').hidden)return;
+    box.classList.add('on');
+    var v=$('#pcMedia video');
+    if(v){v.muted=false;var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;var q=v.play();if(q&&q.catch)q.catch(function(){});});}
+    setTimeout(function(){
+      if(tok!==pcToken)return;
+      typeInto($('#pcLine'),pc.line||'',55,function(){if(tok===pcToken)$('#pcNext').hidden=false;});
+    },900);
+  },2200);
+}
+
+/* Season 4 wishlist */
+const wish=new Set();let wishLoaded=false;
+function renderWish(){
+  if(!wishLoaded){wishLoaded=true;var sv=lsGet('ss_wish');if(sv){try{JSON.parse(sv).forEach(function(k){wish.add(k);});}catch(e){}}}
+  $('#wishChips').innerHTML=(CONFIG.wishlist||[]).map(function(w){return '<button class="wchip" aria-pressed="'+wish.has(w)+'" data-w="'+esc(w)+'">'+w+'</button>';}).join('');
+  $$('.wchip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.w;if(wish.has(k))wish.delete(k);else wish.add(k);
+      b.setAttribute('aria-pressed',String(wish.has(k)));lsSet('ss_wish',JSON.stringify(Array.from(wish)));
+    });
+  });
+}
+function planPicks(){var p=Array.from(wish);return p.length?p:CONFIG.season4.map(function(x){return x[1];});}
+function showPlan(){
+  $('#planList').innerHTML=planPicks().map(function(p){return '<li>'+p+'</li>';}).join('');
+  $('#planBox').hidden=false;$('#wishBox').hidden=true;
+}
+function copyPlan(){
+  var txt='Season 4 plan, picked by '+CONFIG.her+':\n'+planPicks().map(function(p,i){return 'E'+(i+1)+'. '+p;}).join('\n');
+  var fallback=function(){var r=document.createRange();r.selectNodeContents($('#planList'));var sl=getSelection();sl.removeAllRanges();sl.addRange(r);toast('Plan selected. Press and hold to copy.');};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){toast('Plan copied. Send it to '+CONFIG.him+'.');},fallback);}else{fallback();}
+}
+
+/* ---------- navigation ---------- */
+function showProfiles(){$('#app').hidden=true;$('#profiles').hidden=false;document.documentElement.classList.remove('lock');}
+function enter(){
+  $('#profiles').hidden=true;$('#app').hidden=false;window.scrollTo(0,0);
+  initCoupons();initMemories();placeEggs();
+}
+function endIntro(){
+  if($('#intro').hidden)return;
+  $('#intro').hidden=true;startRecap();
+}
+
+/* ---------- wire up ---------- */
+function init(){
+  $('#avHer').innerHTML=face('#e5486a');$('#avHim').innerHTML=face('#3f86c9');updateUs();
+  $('#meBtn').innerHTML=face('#e5486a');setSnd();
+  renderStatic();renderTabs();renderList();renderContinue();renderTop10();renderFinale();
+  buildCounter();initMatch();renderQuiz();initLetter();
+  renderGuess();renderOpenWhen();renderMap();buildSearch();preloadRecap();
+  document.addEventListener('keydown',function(e){
+    if(e.target&&/INPUT|TEXTAREA/.test(e.target.tagName))return;
+    if(e.key&&e.key.length===1){keyBuf=(keyBuf+e.key.toLowerCase()).slice(-24);checkNick(keyBuf);}
+  });
+  $('#copyPlan').addEventListener('click',copyPlan);
+  $('#pcNext').addEventListener('click',function(){pcToken++;var pv=$('#pcMedia video');if(pv){try{pv.pause();}catch(e){}}showSeason4();});
+  window.addEventListener('resize',placeEggs);
+
+  /* Netflix intro video plays first, then the original title animation, then profiles. */
+  var iv=$('#introVideo'),titleShown=false,ivGuard=0;
+  function showTitle(){
+    if(titleShown)return;titleShown=true;clearTimeout(ivGuard);
+    ac();sting();iv.classList.remove('on');try{iv.pause();}catch(e){}
+    $('#introStart').hidden=true;$('#introTitle').hidden=false;
+    setTimeout(endIntro,3500);
+    $('#introTitle').addEventListener('click',endIntro);
+  }
+  function playNetflix(){
+    iv.muted=false;iv.currentTime=0;
+    var p=iv.play();
+    if(p&&p.then){
+      p.then(function(){
+        $('#introStart').hidden=true;iv.classList.add('on');
+        ivGuard=setTimeout(showTitle,(isFinite(iv.duration)?iv.duration:6)*1000+2500);
+      }).catch(function(){});
+    }
+    return p;
+  }
+  iv.addEventListener('ended',showTitle);
+  iv.addEventListener('error',showTitle);
+  /* Try to start on load. If the browser blocks sound, the Tap to play button is shown as before. */
+  try{playNetflix();}catch(e){}
+  $('#introStart').addEventListener('click',function(){
+    ac();
+    var p=playNetflix();
+    if(!(p&&p.then))showTitle();
+    else p.catch(showTitle);
+  });
+  $$('.prof').forEach(function(p){
+    p.addEventListener('click',function(){
+      var w=p.dataset.p,av=$('.av',p);
+      if(w==='her'){enter();return;}
+      av.classList.remove('shake');void av.offsetWidth;av.classList.add('shake');
+      if(w==='him')toast('Nee sreelesh aano');
+      else if(finaleDone){toast('Season 4 is on the way. Renewal confirmed.');}
+      else toast('This profile unlocks when Season 3 ends.');
+    });
+  });
+  $('#meBtn').addEventListener('click',showProfiles);
+  $('#snd').addEventListener('click',function(){soundOn=!soundOn;setSnd();});
+
+  var taps=0,tapT;
+  $('#logo').addEventListener('click',function(){
+    taps++;clearTimeout(tapT);tapT=setTimeout(function(){taps=0;},1500);
+    if(taps>=5){taps=0;if(!unlocked){unlocked=true;renderFinale();toast('Finale unlocked.');}}
+  });
+  $$('.chip').forEach(function(c){
+    c.addEventListener('click',function(){
+      var t=document.getElementById(c.dataset.go);
+      if(t)t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    });
+  });
+
+  $('#heroPlay').addEventListener('click',function(){openEpisode(0);});
+  $('#heroInfo').addEventListener('click',openInfo);
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('[data-k].ep,[data-k].wide');
+    if(b){openEpisode(+b.dataset.k);return;}
+    var g=e.target.closest&&e.target.closest('[data-g]');
+    if(g){openMedia(+g.dataset.g);return;}
+    var eg=e.target.closest&&e.target.closest('[data-egg]');
+    if(eg)openEgg();
+  });
+  $('#seasonTabs').addEventListener('click',function(e){
+    var b=e.target.closest('.tab');if(!b)return;
+    curSeason=+b.dataset.s;renderTabs();renderList();
+  });
+  $('#mReset').addEventListener('click',initMatch);
+
+  $('#finBtn').addEventListener('click',function(){
+    if(!unlocked){var left=NEED-watched.size;toast('Watch '+left+' more episode'+(left===1?'':'s')+' to unlock the finale.');return;}
+    startFinale();
+  });
+  $('#fin2next').addEventListener('click',showGift);
+  $('#fin3next').addEventListener('click',showCredits);
+  $('#skipCredits').addEventListener('click',showPostCredits);
+  function copyText(txt,label,sel){
+    var done=function(){toast(label+' copied.');};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents($(sel));var g=getSelection();g.removeAllRanges();g.addRange(r);toast('Selected. Press and hold to copy.');};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,fallback);}else{fallback();}
+  }
+  $('#copyCode').addEventListener('click',function(){copyText(CONFIG.giftCode,'Card number','#giftCode');});
+  $('#copyPin').addEventListener('click',function(){copyText(CONFIG.giftPin,'PIN','#giftPin');});
+  var no=$('#renewNo');
+  function dodge(e){
+    if(e&&e.preventDefault)e.preventDefault();
+    var dx=(Math.random()-.5)*220,dy=(Math.random()-.5)*110;
+    no.style.transform='translate('+dx+'px,'+dy+'px)';
+  }
+  ['pointerenter','pointerdown','focus'].forEach(function(ev){no.addEventListener(ev,dodge);});
+  no.addEventListener('click',function(){toast('That option is not available in your region.');});
+  $('#renewYes').addEventListener('click',function(){
+    $('#renewBox').hidden=true;$('#renewQ').textContent='Renewed. Season 4, 5, 6... however many they let us have.';
+    $('#backSeries').hidden=false;showPlan();confetti(220);chime();
+  });
+  $('#backSeries').addEventListener('click',closeFinale);
+}
+init();
+})();
+</script>
+
+</html>
